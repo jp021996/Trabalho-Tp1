@@ -39,9 +39,6 @@ class Controle{
     void executar(ResultadoAutenticacao&);
 
     void getDadosLogin();
-    void getDadosCadastroLeitor();
-    void getDadosCadastroDesenvolvedor();
-    void getDadosCadastroAdministrador();
 public:
     void start();
 

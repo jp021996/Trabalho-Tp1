@@ -6,40 +6,6 @@ void Controle::getDadosLogin(){
         cout << "senha: " << senhaUsuario->getSenha() << endl;
 }
 
-//definition of the method to get the informations of the reader
-//after the registering
-void Controle::getDadosCadastroLeitor(){
-    cout << "DADOS CADASTRADOS" << endl;
-    cout << "Nome: " << leitor->getNome() << endl;
-    cout << "Sobrenome: " << leitor->getSobrenome() << endl;
-    cout << "Email: " << leitor->getEmail() << endl;
-    cout << "Senha: " << leitor->getSenha() << endl;
-}
-
-//definition of the method to get the informations of the developer
-//after the registering
-void Controle::getDadosCadastroDesenvolvedor(){
-    cout << "DADOS CADASTRADOS" << endl;
-    cout << "Nome: " << desenvolvedor->getNome() << endl;
-    cout << "Sobrenome: " << desenvolvedor->getSobrenome() << endl;
-    cout << "Email: " << desenvolvedor->getEmail() << endl;
-    cout << "Senha: " << desenvolvedor->getSenha() << endl;
-    cout << "Data de nascimento: " << desenvolvedor->getData() << endl;
-}
-
-//definition of the method to get the informations of the administer
-//after the registering
-void Controle::getDadosCadastroAdministrador(){
-    cout << "DADOS CADASTRADOS" << endl;
-    cout << "Nome: " << administrador->getNome() << endl;
-    cout << "Sobrenome: " << administrador->getSobrenome() << endl;
-    cout << "Email: " << administrador->getEmail() << endl;
-    cout << "Senha: " << administrador->getSenha() << endl;
-    cout << "Data de nascimento: " << administrador->getData() << endl;
-    cout << "Telefone: " << administrador->getTelefone() << endl;
-    cout << "Endereco: " << administrador->getEndereco() << endl;
-}
-
 //definition of the method that executes the program
 //after the user authenticates
 void Controle::executar(ResultadoAutenticacao& autenticado){
@@ -372,9 +338,6 @@ ResultadoCadastro Controle::cadastrar(){
                     system("PAUSE");
                     cout << "Cadastro realizado com sucesso" << endl;
 
-                    //show the user the informations
-                    getDadosCadastroLeitor();
-
                     system("pause");
                 }
                 //deallocating memory of the object Leitor
@@ -396,11 +359,8 @@ ResultadoCadastro Controle::cadastrar(){
                 }
                 if (resultado.getValor() == ResultadoCadastro::SUCESSO){
                     cout << endl << "CADASTRANDO DESENVOLVEDOR -> DADOS INSERIDOS -> ..... USUARIO CADASTRADO." << endl;
-                    resultado.setValor(ResultadoCadastro::SUCESSO);
-                    system("PAUSE");
-
-                    //show the user the informations
-                    getDadosCadastroDesenvolvedor();
+                    system("pause");
+                    cout << "Cadastro realizado com sucesso" << endl;
 
                     system("pause");
                 }
@@ -424,11 +384,8 @@ ResultadoCadastro Controle::cadastrar(){
                 }
                 if (resultado.getValor() == ResultadoCadastro::SUCESSO){
                     cout << endl << "CADASTRANDO ADMINISTRADOR -> DADOS INSERIDOS -> ..... USUARIO CADASTRADO." << endl;
-                    resultado.setValor(ResultadoCadastro::SUCESSO);
                     system("PAUSE");
-
-                    //show the user the informations
-                    getDadosCadastroAdministrador();
+                    cout << "Cadastro realizado com sucesso" << endl;
 
                     system("pause");
                 }
@@ -439,7 +396,6 @@ ResultadoCadastro Controle::cadastrar(){
                 break;
 
             default:
-
                 cout << endl << "OPCAO INVALIDA, RETORNANDO. " << endl;
                 resultado.setValor(ResultadoCadastro::CANCELAR);
                 system("PAUSE");

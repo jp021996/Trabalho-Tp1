@@ -78,15 +78,6 @@ ResultadoCadastro ApresentacaoGestaoUsuario::cadastrarLeitor(Leitor& leitor) thr
     //Solicit authentication
     if(again){
             resultado = link_MA_MS_GestaoUsuario->cadastrarLeitor(leitor);
-
-        //check if the result of the authentication is a failure or a success
-        if(resultado.getValor() == ResultadoCadastro::FALHA){
-            cout << endl << "Falha no cadastro." << endl;
-            system("pause");
-        }else{
-            cout << endl << "Cadastro feito com sucesso." ;
-            system("pause");
-        }
     }
 
     return resultado;
@@ -167,15 +158,6 @@ ResultadoCadastro ApresentacaoGestaoUsuario::cadastrarDesenvolvedor(Desenvolvedo
     //Solicit authentication
     if(again){
             resultado = link_MA_MS_GestaoUsuario->cadastrarDesenvolvedor(desenvolvedor);
-
-        //check if the result of the authentication is a failure or a success
-        if(resultado.getValor() == ResultadoCadastro::FALHA){
-            cout << endl << "Falha no cadastro." << endl;
-            system("pause");
-        }else{
-            cout << endl << "Cadastro feito com sucesso." ;
-            system("pause");
-        }
     }
 
     return resultado;
@@ -266,15 +248,6 @@ ResultadoCadastro ApresentacaoGestaoUsuario::cadastrarAdministrador(Administrado
     //Solicit authentication
     if(again){
             resultado = link_MA_MS_GestaoUsuario->cadastrarAdministrador(administrador);
-
-        //check if the result of the authentication is a failure or a success
-        if(resultado.getValor() == ResultadoCadastro::FALHA){
-            cout << endl << "Falha no cadastro." << endl;
-            system("pause");
-        }else{
-            cout << endl << "Cadastro feito com sucesso." ;
-            system("pause");
-        }
     }
 
     return resultado;
