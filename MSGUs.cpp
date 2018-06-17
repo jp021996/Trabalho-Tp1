@@ -259,7 +259,7 @@ Resultado ServicoGestao::remover(const Email& email) throw(runtime_error){
 }
 
 //definition of the method to edit the reader
-Resultado ServicoGestao::editarLeitor(const Leitor& leitor) throw(runtime_error){
+Resultado ServicoGestao::editarLeitor(const Leitor& leitor, const string& str) throw(runtime_error){
     //the object to be the result if the edition was a success or a failure
     Resultado resultado;
     //the object to access the database
@@ -267,13 +267,35 @@ Resultado ServicoGestao::editarLeitor(const Leitor& leitor) throw(runtime_error)
     //the query to set the informations
     string query;
 
+    //creating the query to update the reader
+    query = "UPDATE Leitor \
+    SET Nome = '" + leitor.getNome() + "', \
+    SobreNome = '" + leitor.getSobrenome() + "', \
+    Email = '" + leitor.getEmail() + "', \
+    Senha = '" + leitor.getSenha() + "' \
+    WHERE Email = '" + str + "';";
 
+    //put the query into the object
+    comando.setComandoSQL(query);
+
+    //execute the command to create the table
+    try {
+        comando.executar();
+    }
+    catch (EErroPersistencia& e){
+        cerr << e.what();
+        system("pause");
+        resultado.setValor(Resultado::FALHA);
+        return resultado;
+    }
+
+    resultado.setValor(Resultado::SUCESSO);
 
     return resultado;
 }
 
 //definition of the method to edit the developer
-Resultado ServicoGestao::editarDesenvolvedor(const Desenvolvedor& desenvolvedor) throw(runtime_error){
+Resultado ServicoGestao::editarDesenvolvedor(const Desenvolvedor& desenvolvedor, const string& str) throw(runtime_error){
     //the object to be the result if the edition was a success or a failure
     Resultado resultado;
 
@@ -281,7 +303,7 @@ Resultado ServicoGestao::editarDesenvolvedor(const Desenvolvedor& desenvolvedor)
 }
 
 //definition of the method to edit the administer
-Resultado ServicoGestao::editarAdministrador(const Administrador& administrador) throw(runtime_error){
+Resultado ServicoGestao::editarAdministrador(const Administrador& administrador, const string& str) throw(runtime_error){
     //the object to be the result if the edition was a success or a failure
     Resultado resultado;
 

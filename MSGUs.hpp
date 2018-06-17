@@ -18,10 +18,10 @@ public:
     Resultado remover(const Email&) throw(runtime_error);
 
     //declaration of the method to edit the reader
-    Resultado editarLeitor(const Leitor&) throw(runtime_error);
+    Resultado editarLeitor(const Leitor&, const string&) throw(runtime_error);
     //declaration of the method to edit the developer
-    Resultado editarDesenvolvedor(const Desenvolvedor&) throw(runtime_error);
+    Resultado editarDesenvolvedor(const Desenvolvedor&, const string&) throw(runtime_error);
     //declaration of the method to edit the administer
-    Resultado editarAdministrador(const Administrador&) throw(runtime_error);
+    Resultado editarAdministrador(const Administrador&, const string&) throw(runtime_error);
 };
 #endif // MSGUS_H_INCLUDED

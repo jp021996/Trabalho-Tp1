@@ -10,6 +10,10 @@ ResultadoAutenticacao ServicoAutenticar::autenticar(const Email &email, const Se
     string query;
     //the password of the user
     string senhaDatabase;
+    //the pointers to objects
+    Leitor *leitor;
+    Desenvolvedor *desenvolvedor;
+    Administrador *administrador;
 
     //get password of the email
     query = "SELECT Senha FROM Leitor \
@@ -40,6 +44,20 @@ ResultadoAutenticacao ServicoAutenticar::autenticar(const Email &email, const Se
         if(senhaDatabase == senha.getSenha()){
             resultado.setValor(Resultado::SUCESSO);
             resultado.setTipo(1);
+
+            //creating the reader
+            leitor = new Leitor();
+            leitor->setEmail(email.getEmail());
+            leitor->setSenha(senha.getSenha());
+
+            resultado.criarLeitor();
+            resultado.setLeitor(*leitor);
+
+            cout << "chegou" << endl;
+
+            //deallocating memory of the reader
+            delete leitor;
+
             return resultado;
         }
         else{
@@ -79,6 +97,18 @@ ResultadoAutenticacao ServicoAutenticar::autenticar(const Email &email, const Se
         if(senhaDatabase == senha.getSenha()){
             resultado.setValor(Resultado::SUCESSO);
             resultado.setTipo(2);
+
+            //creating the developer
+            desenvolvedor = new Desenvolvedor();
+            desenvolvedor->setEmail(email.getEmail());
+            desenvolvedor->setSenha(senha.getSenha());
+
+            resultado.criarDesenvolvedor();
+            resultado.setDesenvolvedor(*desenvolvedor);
+
+            //deallocating memory of the developer
+            delete desenvolvedor;
+
             return resultado;
         }
         else{
@@ -118,6 +148,18 @@ ResultadoAutenticacao ServicoAutenticar::autenticar(const Email &email, const Se
         if(senhaDatabase == senha.getSenha()){
             resultado.setValor(Resultado::SUCESSO);
             resultado.setTipo(3);
+
+            //creating the administer
+            administrador = new Administrador();
+            administrador->setEmail(email.getEmail());
+            administrador->setSenha(senha.getSenha());
+
+            resultado.criarAdministrador();
+            resultado.setAdministrador(*administrador);
+
+            //deallocating memory of the developer
+            delete administrador;
+
             return resultado;
         }
         else{

@@ -73,11 +73,11 @@ public:
     virtual Resultado remover(const Email&) throw(runtime_error) = 0;
 
     //method to solicit the edition of the reader user
-    virtual Resultado editarLeitor(const Leitor&) throw(runtime_error) = 0;
+    virtual Resultado editarLeitor(const Leitor&, const string&) throw(runtime_error) = 0;
     //method to solicit the edition of the developer user
-    virtual Resultado editarDesenvolvedor(const Desenvolvedor&) throw(runtime_error) = 0;
+    virtual Resultado editarDesenvolvedor(const Desenvolvedor&, const string&) throw(runtime_error) = 0;
     //method to solicit the edition of the administer user
-    virtual Resultado editarAdministrador(const Administrador&) throw(runtime_error) = 0;
+    virtual Resultado editarAdministrador(const Administrador&, const string&) throw(runtime_error) = 0;
     //virtual destructor
     //virtual ~IS_GestaoUsuario();
     virtual ~IS_GestaoUsuario(){}

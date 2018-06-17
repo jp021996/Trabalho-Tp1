@@ -411,7 +411,7 @@ Resultado ApresentacaoGestaoUsuario::executar(ResultadoAutenticacao& autenticado
                 }
 
                 try{
-                    resultado = link_MA_MS_GestaoUsuario->editarLeitor(*leitor);
+                    resultado = link_MA_MS_GestaoUsuario->editarLeitor(*leitor,autenticado.getLeitor().getEmail());
                     break;
                 }
                 //in the case of system error
@@ -549,7 +549,7 @@ Resultado ApresentacaoGestaoUsuario::executar(ResultadoAutenticacao& autenticado
                 }
 
                 try{
-                    resultado = link_MA_MS_GestaoUsuario->editarDesenvolvedor(*desenvolvedor);
+                    resultado = link_MA_MS_GestaoUsuario->editarDesenvolvedor(*desenvolvedor,autenticado.getDesenvolvedor().getEmail());
                     break;
                 }
                 //in the case of system error
@@ -737,7 +737,7 @@ Resultado ApresentacaoGestaoUsuario::executar(ResultadoAutenticacao& autenticado
                 }
 
                 try{
-                    resultado = link_MA_MS_GestaoUsuario->editarAdministrador(*administrador);
+                    resultado = link_MA_MS_GestaoUsuario->editarAdministrador(*administrador, autenticado.getAdministrador().getEmail());
                     break;
                 }
                 //in the case of system error

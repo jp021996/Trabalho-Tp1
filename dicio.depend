@@ -352,7 +352,7 @@
 	<stdexcept>
 	"interfaces.hpp"
 
-1529239055 c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\trabalho-tp1\interfaces.hpp
+1529276791 c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\trabalho-tp1\interfaces.hpp
 	"resultados.hpp"
 	<stdexcept>
 
@@ -371,7 +371,7 @@
 1529239449 c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\trabalho-tp1\magus.hpp
 	"interfaces.hpp"
 
-1529242671 c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\trabalho-tp1\msgus.hpp
+1529276790 c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\trabalho-tp1\msgus.hpp
 	"interfaces.hpp"
 	"UnidadePersistencia.hpp"
 
@@ -399,10 +399,10 @@
 1529239055 source:c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\trabalho-tp1\mavoc.cpp
 	"MAVoc.hpp"
 
-1529240560 source:c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\trabalho-tp1\msaut.cpp
+1529276790 source:c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\trabalho-tp1\msaut.cpp
 	"MSAut.hpp"
 
-1529275631 source:c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\trabalho-tp1\msgus.cpp
+1529277004 source:c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\trabalho-tp1\msgus.cpp
 	"MSGUs.hpp"
 
 1529240560 source:c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\trabalho-tp1\msvoc.cpp
@@ -417,7 +417,7 @@
 1529239055 c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\trabalho-tp1\testes.hpp
 	"entidades.hpp"
 
-1529244634 source:c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\trabalho-tp1\magus.cpp
+1529276840 source:c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\trabalho-tp1\magus.cpp
 	"MAGUs.hpp"
 
 1529240177 source:c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\trabalho-tp1\sqlite3.c
