@@ -356,8 +356,9 @@
 	"resultados.hpp"
 	<stdexcept>
 
-1529240623 c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\trabalho-tp1\msaut.hpp
+1529273241 c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\trabalho-tp1\msaut.hpp
 	"interfaces.hpp"
+	"UnidadePersistencia.hpp"
 
 1529239055 c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\trabalho-tp1\stubs.hpp
 	"interfaces.hpp"
@@ -401,7 +402,7 @@
 1529240560 source:c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\trabalho-tp1\msaut.cpp
 	"MSAut.hpp"
 
-1529248101 source:c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\trabalho-tp1\msgus.cpp
+1529254950 source:c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\trabalho-tp1\msgus.cpp
 	"MSGUs.hpp"
 
 1529240560 source:c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\trabalho-tp1\msvoc.cpp
