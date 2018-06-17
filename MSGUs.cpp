@@ -298,6 +298,35 @@ Resultado ServicoGestao::editarLeitor(const Leitor& leitor, const string& str) t
 Resultado ServicoGestao::editarDesenvolvedor(const Desenvolvedor& desenvolvedor, const string& str) throw(runtime_error){
     //the object to be the result if the edition was a success or a failure
     Resultado resultado;
+    //the object to access the database
+    ComandoSQL comando;
+    //the query to set the informations
+    string query;
+
+    //creating the query to update the reader
+    query = "UPDATE Desenvolvedor \
+    SET Nome = '" + desenvolvedor.getNome() + "', \
+    SobreNome = '" + desenvolvedor.getSobrenome() + "', \
+    Email = '" + desenvolvedor.getEmail() + "', \
+    Senha = '" + desenvolvedor.getSenha() + "', \
+    Data = '" + desenvolvedor.getData() + "' \
+    WHERE Email = '" + str + "';";
+
+    //put the query into the object
+    comando.setComandoSQL(query);
+
+    //execute the command to create the table
+    try {
+        comando.executar();
+    }
+    catch (EErroPersistencia& e){
+        cerr << e.what();
+        system("pause");
+        resultado.setValor(Resultado::FALHA);
+        return resultado;
+    }
+
+    resultado.setValor(Resultado::SUCESSO);
 
     return resultado;
 }
@@ -306,6 +335,37 @@ Resultado ServicoGestao::editarDesenvolvedor(const Desenvolvedor& desenvolvedor,
 Resultado ServicoGestao::editarAdministrador(const Administrador& administrador, const string& str) throw(runtime_error){
     //the object to be the result if the edition was a success or a failure
     Resultado resultado;
+    //the object to access the database
+    ComandoSQL comando;
+    //the query to set the informations
+    string query;
+
+    //creating the query to update the administer
+    query = "UPDATE Administrador \
+    SET Nome = '" + administrador.getNome() + "', \
+    SobreNome = '" + administrador.getSobrenome() + "', \
+    Email = '" + administrador.getEmail() + "', \
+    Senha = '" + administrador.getSenha() + "', \
+    Data = '" + administrador.getData() + "', \
+    Telefone = '" + administrador.getTelefone() + "', \
+    Endereco = '" + administrador.getEndereco() + "' \
+    WHERE Email = '" + str + "';";
+
+    //put the query into the object
+    comando.setComandoSQL(query);
+
+    //execute the command to create the table
+    try {
+        comando.executar();
+    }
+    catch (EErroPersistencia& e){
+        cerr << e.what();
+        system("pause");
+        resultado.setValor(Resultado::FALHA);
+        return resultado;
+    }
+
+    resultado.setValor(Resultado::SUCESSO);
 
     return resultado;
 }
