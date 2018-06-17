@@ -1,0 +1,322 @@
+# depslib dependency file v1.0
+1523799255 source:/home/carlos/Documents/UnB/Semestre_9/TP1/Trabalho/dicio/entidades.cpp
+	"entidades.hpp"
+
+1523799255 /home/carlos/Documents/UnB/Semestre_9/TP1/Trabalho/dicio/entidades.hpp
+	"dominios.hpp"
+
+1523801484 source:/home/carlos/Documents/UnB/Semestre_9/TP1/Trabalho/dicio/testes.cpp
+	"testes.hpp"
+
+1523814102 /home/carlos/Documents/UnB/Semestre_9/TP1/Trabalho/dicio/testes.hpp
+	"entidades.hpp"
+
+1523794122 source:/home/carlos/Documents/UnB/Semestre_9/TP1/Trabalho/dicio/dominios.cpp
+	"dominios.hpp"
+
+1523794122 /home/carlos/Documents/UnB/Semestre_9/TP1/Trabalho/dicio/dominios.hpp
+	<string>
+	<iostream>
+	<stdexcept>
+
+1523814102 source:/home/carlos/Documents/UnB/Semestre_9/TP1/Trabalho/dicio/main.cpp
+	"testes.hpp"
+	<iostream>
+
+1523794122 source:c:\users\cgaa1\downloads\dicio\dominios.cpp
+	"dominios.hpp"
+
+1523926890 c:\users\cgaa1\downloads\dicio\dominios.hpp
+	<string>
+	<iostream>
+	<stdexcept>
+
+1523799255 source:c:\users\cgaa1\downloads\dicio\entidades.cpp
+	"entidades.hpp"
+
+1523925344 c:\users\cgaa1\downloads\dicio\entidades.hpp
+	"dominios.hpp"
+
+1523815735 source:c:\users\cgaa1\downloads\dicio\testes.cpp
+	"testes.hpp"
+
+1523926890 c:\users\cgaa1\downloads\dicio\testes.hpp
+	"entidades.hpp"
+
+1523919778 source:c:\users\cgaa1\downloads\dicio\main.cpp
+	"testes.hpp"
+
+1526737125 source:c:\users\cgaa1\desktop\trabalho_140036954\dominios.cpp
+	"dominios.hpp"
+
+1526737125 c:\users\cgaa1\desktop\trabalho_140036954\dominios.hpp
+	<string>
+	<iostream>
+	<stdexcept>
+
+1526758097 source:c:\users\cgaa1\desktop\trabalho_140036954\entidades.cpp
+	"entidades.hpp"
+
+1526758097 c:\users\cgaa1\desktop\trabalho_140036954\entidades.hpp
+	"dominios.hpp"
+
+1526741467 source:c:\users\cgaa1\desktop\trabalho_140036954\maaut.cpp
+	"MAAut.hpp"
+
+1526732890 c:\users\cgaa1\desktop\trabalho_140036954\maaut.hpp
+	<stdexcept>
+	"interfaces.hpp"
+
+1526828135 c:\users\cgaa1\desktop\trabalho_140036954\interfaces.hpp
+	"resultados.hpp"
+	<stdexcept>
+
+1526779541 c:\users\cgaa1\desktop\trabalho_140036954\resultados.hpp
+	"entidades.hpp"
+	<string>
+
+1526739403 source:c:\users\cgaa1\desktop\trabalho_140036954\msaut.cpp
+	"MSAut.hpp"
+
+1526732939 c:\users\cgaa1\desktop\trabalho_140036954\msaut.hpp
+	"stubs.hpp"
+
+1526828135 c:\users\cgaa1\desktop\trabalho_140036954\stubs.hpp
+	"interfaces.hpp"
+	<string>
+	<stdexcept>
+	<iostream>
+
+1523815734 source:c:\users\cgaa1\desktop\trabalho_140036954\testes.cpp
+	"testes.hpp"
+
+1523926890 c:\users\cgaa1\desktop\trabalho_140036954\testes.hpp
+	"entidades.hpp"
+
+1526779139 source:c:\users\cgaa1\desktop\trabalho_140036954\controladores.cpp
+	"controladores.hpp"
+	"stubs.hpp"
+
+1526778863 c:\users\cgaa1\desktop\trabalho_140036954\controladores.hpp
+	"dominios.hpp"
+	"resultados.hpp"
+	"MAAut.hpp"
+	"MSAut.hpp"
+	"MAGUs.hpp"
+	"MSGUs.hpp"
+
+1526686179 source:c:\users\cgaa1\desktop\trabalho_140036954\main.cpp
+	<locale.h>
+	"controladores.hpp"
+
+1526828135 source:c:\users\cgaa1\desktop\trabalho_140036954\stubs.cpp
+	"stubs.hpp"
+
+1526828270 source:c:\users\cgaa1\desktop\trabalho_140036954\magus.cpp
+	"MAGUs.hpp"
+
+1526778862 c:\users\cgaa1\desktop\trabalho_140036954\magus.hpp
+	"interfaces.hpp"
+
+1526828134 c:\users\cgaa1\desktop\trabalho_140036954\msgus.hpp
+	"stubs.hpp"
+
+1526828135 source:c:\users\cgaa1\desktop\trabalho_140036954\msgus.cpp
+	"MSGUs.hpp"
+
+1526948800 source:c:\users\usuario\desktop\vocab comps\controladores.cpp
+	"controladores.hpp"
+	"stubs.hpp"
+
+1526841073 c:\users\usuario\desktop\vocab comps\controladores.hpp
+	"dominios.hpp"
+	"resultados.hpp"
+	"MAAut.hpp"
+	"MSAut.hpp"
+	"MAGUs.hpp"
+	"MSGUs.hpp"
+	"MAVoc.hpp"
+	"MSVoc.hpp"
+
+1526931231 c:\users\usuario\desktop\vocab comps\dominios.hpp
+	<string>
+	<iostream>
+	<stdexcept>
+
+1526948129 c:\users\usuario\desktop\vocab comps\resultados.hpp
+	"entidades.hpp"
+	<vector>
+	<string>
+	<string>
+
+1526949647 c:\users\usuario\desktop\vocab comps\entidades.hpp
+	"dominios.hpp"
+
+1526732890 c:\users\usuario\desktop\vocab comps\maaut.hpp
+	<stdexcept>
+	"interfaces.hpp"
+
+1526952946 c:\users\usuario\desktop\vocab comps\interfaces.hpp
+	"resultados.hpp"
+	<stdexcept>
+
+1526732939 c:\users\usuario\desktop\vocab comps\msaut.hpp
+	"stubs.hpp"
+
+1526952946 c:\users\usuario\desktop\vocab comps\stubs.hpp
+	"interfaces.hpp"
+	"entidades.hpp"
+	<string>
+	<stdexcept>
+	<iostream>
+	<vector>
+
+1526778862 c:\users\usuario\desktop\vocab comps\magus.hpp
+	"interfaces.hpp"
+
+1526828134 c:\users\usuario\desktop\vocab comps\msgus.hpp
+	"stubs.hpp"
+
+1526943653 source:c:\users\usuario\desktop\vocab comps\dominios.cpp
+	"dominios.hpp"
+
+1526949647 source:c:\users\usuario\desktop\vocab comps\entidades.cpp
+	"entidades.hpp"
+
+1526741467 source:c:\users\usuario\desktop\vocab comps\maaut.cpp
+	"MAAut.hpp"
+
+1526828270 source:c:\users\usuario\desktop\vocab comps\magus.cpp
+	"MAGUs.hpp"
+
+1526686179 source:c:\users\usuario\desktop\vocab comps\main.cpp
+	<locale.h>
+	"controladores.hpp"
+
+1526739403 source:c:\users\usuario\desktop\vocab comps\msaut.cpp
+	"MSAut.hpp"
+
+1526828135 source:c:\users\usuario\desktop\vocab comps\msgus.cpp
+	"MSGUs.hpp"
+
+1526948260 source:c:\users\usuario\desktop\vocab comps\stubs.cpp
+	"stubs.hpp"
+
+1523815734 source:c:\users\usuario\desktop\vocab comps\testes.cpp
+	"testes.hpp"
+
+1523926890 c:\users\usuario\desktop\vocab comps\testes.hpp
+	"entidades.hpp"
+
+1526933499 c:\users\usuario\desktop\vocab comps\mavoc.hpp
+	<stdexcept>
+	"interfaces.hpp"
+	"entidades.hpp"
+
+1526952946 c:\users\usuario\desktop\vocab comps\msvoc.hpp
+	"stubs.hpp"
+
+1526949592 source:c:\users\usuario\desktop\vocab comps\mavoc.cpp
+	"MAVoc.hpp"
+
+1526949592 source:c:\users\usuario\desktop\vocab comps\msvoc.cpp
+	"MSVoc.hpp"
+
+1526948800 source:c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\controladores.cpp
+	"controladores.hpp"
+	"stubs.hpp"
+
+1526841073 c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\controladores.hpp
+	"dominios.hpp"
+	"resultados.hpp"
+	"MAAut.hpp"
+	"MSAut.hpp"
+	"MAGUs.hpp"
+	"MSGUs.hpp"
+	"MAVoc.hpp"
+	"MSVoc.hpp"
+
+1526931231 c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\dominios.hpp
+	<string>
+	<iostream>
+	<stdexcept>
+
+1526948129 c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\resultados.hpp
+	"entidades.hpp"
+	<vector>
+	<string>
+	<string>
+
+1526949647 c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\entidades.hpp
+	"dominios.hpp"
+
+1526732890 c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\maaut.hpp
+	<stdexcept>
+	"interfaces.hpp"
+
+1526952946 c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\interfaces.hpp
+	"resultados.hpp"
+	<stdexcept>
+
+1526732939 c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\msaut.hpp
+	"stubs.hpp"
+
+1526952946 c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\stubs.hpp
+	"interfaces.hpp"
+	"entidades.hpp"
+	<string>
+	<stdexcept>
+	<iostream>
+	<vector>
+
+1526778862 c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\magus.hpp
+	"interfaces.hpp"
+
+1526828134 c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\msgus.hpp
+	"stubs.hpp"
+
+1526933499 c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\mavoc.hpp
+	<stdexcept>
+	"interfaces.hpp"
+	"entidades.hpp"
+
+1526952946 c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\msvoc.hpp
+	"stubs.hpp"
+
+1526943653 source:c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\dominios.cpp
+	"dominios.hpp"
+
+1526949647 source:c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\entidades.cpp
+	"entidades.hpp"
+
+1526741467 source:c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\maaut.cpp
+	"MAAut.hpp"
+
+1526828270 source:c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\magus.cpp
+	"MAGUs.hpp"
+
+1526686179 source:c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\main.cpp
+	<locale.h>
+	"controladores.hpp"
+
+1526952902 source:c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\mavoc.cpp
+	"MAVoc.hpp"
+
+1526739403 source:c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\msaut.cpp
+	"MSAut.hpp"
+
+1526828135 source:c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\msgus.cpp
+	"MSGUs.hpp"
+
+1526952902 source:c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\msvoc.cpp
+	"MSVoc.hpp"
+
+1526952902 source:c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\stubs.cpp
+	"stubs.hpp"
+
+1523815734 source:c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\testes.cpp
+	"testes.hpp"
+
+1523926890 c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\testes.hpp
+	"entidades.hpp"
+
