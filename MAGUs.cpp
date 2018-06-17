@@ -4,12 +4,12 @@
 DEFINITION AND METHODS OF THE CLASS ApresentacaoGestao
 */
 //definition of the method to set the interface between the presentation and the service module
-void inline ApresentacaoGestao::setLink_MA_MS_GestaoUsuario(IS_GestaoUsuario *link_MA_MS_GestaoUsuario){
+void inline ApresentacaoGestaoUsuario::setLink_MA_MS_GestaoUsuario(IS_GestaoUsuario *link_MA_MS_GestaoUsuario){
         this->link_MA_MS_GestaoUsuario = link_MA_MS_GestaoUsuario;
 }
 
 //definition of the method to register the reader
-ResultadoCadastro ApresentacaoGestao::cadastrarLeitor(Leitor& leitor) throw(runtime_error){
+ResultadoCadastro ApresentacaoGestaoUsuario::cadastrarLeitor(Leitor& leitor) throw(runtime_error){
     //creating the object the check if the registering was a success or a failure
     ResultadoCadastro resultado;
 
@@ -93,7 +93,7 @@ ResultadoCadastro ApresentacaoGestao::cadastrarLeitor(Leitor& leitor) throw(runt
 }
 
 //definition of the method to register the developer
-ResultadoCadastro ApresentacaoGestao::cadastrarDesenvolvedor(Desenvolvedor& desenvolvedor) throw(runtime_error){
+ResultadoCadastro ApresentacaoGestaoUsuario::cadastrarDesenvolvedor(Desenvolvedor& desenvolvedor) throw(runtime_error){
     //creating the object the check if the registering was a success or a failure
     ResultadoCadastro resultado;
 
@@ -182,7 +182,7 @@ ResultadoCadastro ApresentacaoGestao::cadastrarDesenvolvedor(Desenvolvedor& dese
 }
 
 //definition of the method to register the administer
-ResultadoCadastro ApresentacaoGestao::cadastrarAdministrador(Administrador& administrador) throw(runtime_error){
+ResultadoCadastro ApresentacaoGestaoUsuario::cadastrarAdministrador(Administrador& administrador) throw(runtime_error){
     //creating the object the check if the registering was a success or a failure
     ResultadoCadastro resultado;
 
@@ -281,7 +281,7 @@ ResultadoCadastro ApresentacaoGestao::cadastrarAdministrador(Administrador& admi
 }
 
 //definition of the method that will execute the user management account
-Resultado ApresentacaoGestao::executar(ResultadoAutenticacao& autenticado) throw(runtime_error){
+Resultado ApresentacaoGestaoUsuario::executar(ResultadoAutenticacao& autenticado) throw(runtime_error){
     //creating the object the check if the management was a success or a failure
     Resultado resultado;
     //the option of the user

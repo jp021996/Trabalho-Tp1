@@ -61,7 +61,7 @@ void Controle::executar(ResultadoAutenticacao& autenticado){
         //management of account
         if (opcao == 1){
             //the interfaces between the modules of control and user management
-            IA_GestaoUsuario *link_ctrl_MA_GestaoUsuario = new ApresentacaoGestao();
+            IA_GestaoUsuario *link_ctrl_MA_GestaoUsuario = new ApresentacaoGestaoUsuario();
             IS_GestaoUsuario *link_MA_MS_GestaoUsuario = new ServicoGestao();
 
             //create the link between the presentation module and the service module
@@ -321,7 +321,7 @@ ResultadoInicializacao Controle::inicializar(){
 ResultadoCadastro Controle::cadastrar(){
     //link between the module of control and
     //the modules of authentication of the user and the stub
-    IA_GestaoUsuario *link_ctrl_MA_GestaoUsuario = new ApresentacaoGestao();
+    IA_GestaoUsuario *link_ctrl_MA_GestaoUsuario = new ApresentacaoGestaoUsuario();
     IS_GestaoUsuario *link_MA_MS_GestaoUsuario = new ServicoGestao();
     //the type of account
     int tipoConta;

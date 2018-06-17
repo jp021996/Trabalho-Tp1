@@ -4,7 +4,7 @@
 #include "interfaces.hpp"
 
 //definition of the class that presents the registering to the user
-class ApresentacaoGestao : public IA_GestaoUsuario {
+class ApresentacaoGestaoUsuario : public IA_GestaoUsuario {
     //Reference to the service module of registering
     IS_GestaoUsuario *link_MA_MS_GestaoUsuario;
 
