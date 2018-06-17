@@ -45,15 +45,17 @@ private:
         void conectar() throw (EErroPersistencia);
         void desconectar() throw (EErroPersistencia);
         static int callback(void *, int, char **, char **);
+        string comandoSQL;
 
 public:
         static list<ElementoResultado> listaResultado;
-        string comandoSQL;
         ComandoSQL() {
              //Informa o nome do banco de dados.
              nomeBancoDados = "teste.db";
         }
         void executar() throw (EErroPersistencia);
+
+        void setComandoSQL(string);
 };
 
 #endif

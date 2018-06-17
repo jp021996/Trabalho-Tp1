@@ -52,3 +52,7 @@ int ComandoSQL::callback(void *NotUsed, int argc, char **valorColuna, char **nom
       }
       return 0;
 }
+
+void ComandoSQL::setComandoSQL(string str){
+    comandoSQL = str;
+}

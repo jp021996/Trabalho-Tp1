@@ -1,5 +1,4 @@
 #include "controladores.hpp"
-#include "stubs.hpp"
 
 //definition of the method to get the data after the login
 void Controle::getDadosLogin(){

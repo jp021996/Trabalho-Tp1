@@ -2,6 +2,7 @@
 #define MSGUS_H_INCLUDED
 
 #include "interfaces.hpp"
+#include "UnidadePersistencia.hpp"
 
 //definition of the class that will access the data base to simulate the service of
 //registering of the system
