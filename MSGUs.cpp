@@ -254,6 +254,7 @@ Resultado ServicoGestao::remover(const Email& email) throw(runtime_error){
     //the object to be the result if the remove was a success or a failure
     Resultado resultado;
 
+
     return resultado;
 }
 
@@ -261,6 +262,12 @@ Resultado ServicoGestao::remover(const Email& email) throw(runtime_error){
 Resultado ServicoGestao::editarLeitor(const Leitor& leitor) throw(runtime_error){
     //the object to be the result if the edition was a success or a failure
     Resultado resultado;
+    //the object to access the database
+    ComandoSQL comando;
+    //the query to set the informations
+    string query;
+
+
 
     return resultado;
 }
