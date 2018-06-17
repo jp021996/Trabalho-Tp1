@@ -320,7 +320,7 @@
 1523926890 c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\testes.hpp
 	"entidades.hpp"
 
-1529239055 source:c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\trabalho-tp1\controladores.cpp
+1529239466 source:c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\trabalho-tp1\controladores.cpp
 	"controladores.hpp"
 	"stubs.hpp"
 
@@ -417,4 +417,76 @@
 
 1529239449 source:c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\trabalho-tp1\magus.cpp
 	"MAGUs.hpp"
+
+1529240177 source:c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\trabalho-tp1\sqlite3.c
+	"config.h"
+	<vxWorks.h>
+	<pthread.h>
+	"mingw.h"
+	"_mingw.h"
+	<stdarg.h>
+	<stdint.h>
+	<inttypes.h>
+	<intrin.h>
+	<cmnintrin.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<assert.h>
+	<stddef.h>
+	<TargetConditionals.h>
+	<ctype.h>
+	<time.h>
+	<sys/sysctl.h>
+	<malloc/malloc.h>
+	<libkern/OSAtomic.h>
+	<malloc.h>
+	<pthread.h>
+	"windows.h"
+	<sys/cygwin.h>
+	<errno.h>
+	<process.h>
+	<math.h>
+	<sys/types.h>
+	<sys/stat.h>
+	<fcntl.h>
+	<sys/ioctl.h>
+	<unistd.h>
+	<sys/time.h>
+	<errno.h>
+	<sys/mman.h>
+	<sys/file.h>
+	<sys/param.h>
+	<semaphore.h>
+	<limits.h>
+	<sys/mount.h>
+	<utime.h>
+	<sys/dcmd_blk.h>
+	<sys/statvfs.h>
+	<dlfcn.h>
+	"sqlite_tcl.h"
+	"tcl.h"
+	"sqlite3rtree.h"
+	<unicode/utypes.h>
+	<unicode/uregex.h>
+	<unicode/ustring.h>
+	<unicode/ucol.h>
+	<unicode/ubrk.h>
+	<unicode/utf16.h>
+	<ctype.h>
+	<math.h>
+
+1529240195 source:c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\trabalho-tp1\unidadepersistencia.cpp
+	"UnidadePersistencia.hpp"
+
+1529240215 c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\trabalho-tp1\unidadepersistencia.hpp
+	<list>
+	<iostream>
+	<conio.h>
+	<string>
+	<stdio.h>
+	"sqlite3.h"
+
+1529240173 c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\trabalho-tp1\sqlite3.h
+	<stdarg.h>
 
