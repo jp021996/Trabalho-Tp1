@@ -9,6 +9,7 @@
 #include "MSGUs.hpp"
 #include "MAVoc.hpp"
 #include "MSVoc.hpp"
+#include "UnidadePersistencia.hpp"
 
 using namespace std;
 

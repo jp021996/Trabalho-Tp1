@@ -320,10 +320,10 @@
 1523926890 c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\testes.hpp
 	"entidades.hpp"
 
-1529244360 source:c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\trabalho-tp1\controladores.cpp
+1529248148 source:c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\trabalho-tp1\controladores.cpp
 	"controladores.hpp"
 
-1529244360 c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\trabalho-tp1\controladores.hpp
+1529248101 c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\trabalho-tp1\controladores.hpp
 	"dominios.hpp"
 	"resultados.hpp"
 	"MAAut.hpp"
@@ -332,6 +332,7 @@
 	"MSGUs.hpp"
 	"MAVoc.hpp"
 	"MSVoc.hpp"
+	"UnidadePersistencia.hpp"
 
 1529239055 c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\trabalho-tp1\dominios.hpp
 	<string>
@@ -400,7 +401,7 @@
 1529240560 source:c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\trabalho-tp1\msaut.cpp
 	"MSAut.hpp"
 
-1529243919 source:c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\trabalho-tp1\msgus.cpp
+1529248101 source:c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\trabalho-tp1\msgus.cpp
 	"MSGUs.hpp"
 
 1529240560 source:c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\trabalho-tp1\msvoc.cpp
@@ -415,7 +416,7 @@
 1529239055 c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\trabalho-tp1\testes.hpp
 	"entidades.hpp"
 
-1529239449 source:c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\trabalho-tp1\magus.cpp
+1529244634 source:c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\trabalho-tp1\magus.cpp
 	"MAGUs.hpp"
 
 1529240177 source:c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\trabalho-tp1\sqlite3.c

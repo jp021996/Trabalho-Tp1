@@ -15,13 +15,21 @@ ResultadoCadastro ServicoGestao::cadastrarLeitor(const Leitor& leitor) throw(run
     string email;
     string senha;
 
-    //create the table of the reader if it doesn't exist
-    query = "CREATE TABLE IF NOT EXISTS Leitor (\
-    Nome varchar(20), \
-    SobreNome varchar(20), \
-    Email varchar(30), \
-    Senha varchar(8), \
-    PRIMARY KEY(Email));";
+    //get the informations of the reader
+    nome = leitor.getNome();
+    sobrenome = leitor.getSobrenome();
+    email = leitor.getEmail();
+    senha = leitor.getSenha();
+
+    //update the query to check if the email is in one of the three tables
+    query = "SELECT Email FROM Leitor \
+    WHERE Email = '" + email + "' \
+    UNION \
+    SELECT Email from Desenvolvedor \
+    WHERE Email = '" + email + "' \
+    UNION \
+    SELECT Email from Administrador \
+    WHERE Email = '" + email + "';";
 
     //put the query into the object
     comando.setComandoSQL(query);
@@ -32,15 +40,20 @@ ResultadoCadastro ServicoGestao::cadastrarLeitor(const Leitor& leitor) throw(run
     }
     catch (EErroPersistencia& e){
         cerr << e.what();
+        system("pause");
         resultado.setValor(Resultado::FALHA);
         return resultado;
     }
 
-    //get the informations of the reader
-    nome = leitor.getNome();
-    sobrenome = leitor.getSobrenome();
-    email = leitor.getEmail();
-    senha = leitor.getSenha();
+    if(comando.listaResultado.back().getValorColuna() != ""){
+        comando.listaResultado.pop_back();
+        cerr << "Email ja cadastrado no sistema" << endl;
+        system("pause");
+        resultado.setValor(Resultado::FALHA);
+        return resultado;
+    }
+
+    comando.listaResultado.pop_back();
 
     //update the query to insert the informations on the table
     query = "INSERT INTO Leitor VALUES ('" + nome +
@@ -56,6 +69,7 @@ ResultadoCadastro ServicoGestao::cadastrarLeitor(const Leitor& leitor) throw(run
     }
     catch (EErroPersistencia& e){
         cerr << e.what();
+        system("pause");
         resultado.setValor(Resultado::FALHA);
         return resultado;
     }
@@ -82,14 +96,22 @@ ResultadoCadastro ServicoGestao::cadastrarDesenvolvedor(const Desenvolvedor& des
     string senha;
     string data;
 
-    //create the table of the developer if it doesn't exist
-    query = "CREATE TABLE IF NOT EXISTS Desenvolvedor (\
-    Nome varchar(20), \
-    SobreNome varchar(20), \
-    Data varchar(15), \
-    Email varchar(30), \
-    Senha varchar(8), \
-    PRIMARY KEY(Email));";
+    //get the informations of the developer
+    nome = desenvolvedor.getNome();
+    sobrenome = desenvolvedor.getSobrenome();
+    email = desenvolvedor.getEmail();
+    senha = desenvolvedor.getSenha();
+    data = desenvolvedor.getData();
+
+    //update the query to check if the email is in one of the three tables
+    query = "SELECT Email FROM Leitor \
+    WHERE Email = '" + email + "' \
+    UNION \
+    SELECT Email from Desenvolvedor \
+    WHERE Email = '" + email + "' \
+    UNION \
+    SELECT Email from Administrador \
+    WHERE Email = '" + email + "';";
 
     //put the query into the object
     comando.setComandoSQL(query);
@@ -100,16 +122,20 @@ ResultadoCadastro ServicoGestao::cadastrarDesenvolvedor(const Desenvolvedor& des
     }
     catch (EErroPersistencia& e){
         cerr << e.what();
+        system("pause");
         resultado.setValor(Resultado::FALHA);
         return resultado;
     }
 
-    //get the informations of the developer
-    nome = desenvolvedor.getNome();
-    sobrenome = desenvolvedor.getSobrenome();
-    email = desenvolvedor.getEmail();
-    senha = desenvolvedor.getSenha();
-    data = desenvolvedor.getData();
+    if(comando.listaResultado.back().getValorColuna() != ""){
+        comando.listaResultado.pop_back();
+        cerr << "Email ja cadastrado no sistema" << endl;
+        system("pause");
+        resultado.setValor(Resultado::FALHA);
+        return resultado;
+    }
+
+    comando.listaResultado.pop_back();
 
     //update the query to insert the informations on the table
     query = "INSERT INTO Desenvolvedor VALUES ('" + nome +
@@ -154,16 +180,24 @@ ResultadoCadastro ServicoGestao::cadastrarAdministrador(const Administrador& adm
     string telefone;
     string endereco;
 
-    //create the table of the administer if it doesn't exist
-    query = "CREATE TABLE IF NOT EXISTS Administrador (\
-    Nome varchar(20), \
-    SobreNome varchar(20), \
-    Telefone varchar (15), \
-    Data varchar(15), \
-    Endereco varchar (20), \
-    Email varchar(30), \
-    Senha varchar(8), \
-    PRIMARY KEY(Email));";
+    //get the informations of the administer
+    nome = administrador.getNome();
+    sobrenome = administrador.getSobrenome();
+    email = administrador.getEmail();
+    senha = administrador.getSenha();
+    data = administrador.getData();
+    telefone = administrador.getTelefone();
+    endereco = administrador.getEndereco();
+
+    //update the query to check if the email is in one of the three tables
+    query = "SELECT Email FROM Leitor \
+    WHERE Email = '" + email + "' \
+    UNION \
+    SELECT Email from Desenvolvedor \
+    WHERE Email = '" + email + "' \
+    UNION \
+    SELECT Email from Administrador \
+    WHERE Email = '" + email + "';";
 
     //put the query into the object
     comando.setComandoSQL(query);
@@ -174,18 +208,20 @@ ResultadoCadastro ServicoGestao::cadastrarAdministrador(const Administrador& adm
     }
     catch (EErroPersistencia& e){
         cerr << e.what();
+        system("pause");
         resultado.setValor(Resultado::FALHA);
         return resultado;
     }
 
-    //get the informations of the administer
-    nome = administrador.getNome();
-    sobrenome = administrador.getSobrenome();
-    email = administrador.getEmail();
-    senha = administrador.getSenha();
-    data = administrador.getData();
-    telefone = administrador.getTelefone();
-    endereco = administrador.getEndereco();
+    if(comando.listaResultado.back().getValorColuna() != ""){
+        comando.listaResultado.pop_back();
+        cerr << "Email ja cadastrado no sistema" << endl;
+        system("pause");
+        resultado.setValor(Resultado::FALHA);
+        return resultado;
+    }
+
+    comando.listaResultado.pop_back();
 
     //update the query to insert the informations on the table
     query = "INSERT INTO Administrador VALUES ('" + nome +

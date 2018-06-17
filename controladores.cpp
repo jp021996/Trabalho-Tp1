@@ -200,12 +200,83 @@ ResultadoAutenticacao Controle::login(){
 ResultadoInicializacao Controle::inicializar(){
     //the option of the user
     int opcao;
-
     //the objects that will define the result of
     //initialization, authentication and the user register
     ResultadoInicializacao resultadoInicializacao;
     ResultadoAutenticacao resultadoAutenticacao;
     ResultadoCadastro resultadoCadastro;
+
+    //the object to access the database
+    ComandoSQL comando;
+    //the query to create the tables
+    string query;
+
+    //create the table of the reader if it doesn't exist
+    query = "CREATE TABLE IF NOT EXISTS Leitor (\
+    Nome varchar(20), \
+    SobreNome varchar(20), \
+    Email varchar(30), \
+    Senha varchar(8), \
+    PRIMARY KEY(Email));";
+
+    //put the query into the object
+    comando.setComandoSQL(query);
+
+    //execute the command to create the table
+    try {
+        comando.executar();
+    }
+    catch (EErroPersistencia& e){
+        cerr << e.what();
+        resultadoInicializacao.setValor(Resultado::FALHA);
+        return resultadoInicializacao;
+    }
+
+    //create the table of the developer if it doesn't exist
+    query = "CREATE TABLE IF NOT EXISTS Desenvolvedor (\
+    Nome varchar(20), \
+    SobreNome varchar(20), \
+    Data varchar(15), \
+    Email varchar(30), \
+    Senha varchar(8), \
+    PRIMARY KEY(Email));";
+
+    //put the query into the object
+    comando.setComandoSQL(query);
+
+    //execute the command to create the table
+    try {
+        comando.executar();
+    }
+    catch (EErroPersistencia& e){
+        cerr << e.what();
+        resultadoInicializacao.setValor(Resultado::FALHA);
+        return resultadoInicializacao;
+    }
+
+    //create the table of the administer if it doesn't exist
+    query = "CREATE TABLE IF NOT EXISTS Administrador (\
+    Nome varchar(20), \
+    SobreNome varchar(20), \
+    Telefone varchar (15), \
+    Data varchar(15), \
+    Endereco varchar (20), \
+    Email varchar(30), \
+    Senha varchar(8), \
+    PRIMARY KEY(Email));";
+
+    //put the query into the object
+    comando.setComandoSQL(query);
+
+    //execute the command to create the table
+    try {
+        comando.executar();
+    }
+    catch (EErroPersistencia& e){
+        cerr << e.what();
+        resultadoInicializacao.setValor(Resultado::FALHA);
+        return resultadoInicializacao;
+    }
 
     //clean the screen
     system("cls");
@@ -422,11 +493,17 @@ void Controle::start(){
         //initialize
         resultadoInicializacao = this->inicializar();
 
+        if(resultadoInicializacao.getValor() == Resultado::FALHA){
+            cerr << "Erro ao iniciar o programa" << endl;
+            system("pause");
+            cout << "Saindo" << endl;
+            exit(1);
+        }
+
         //check if the user wants to leave the program
         if (resultadoInicializacao.getSair()){
             cout << endl << "FINALIZANDO PROGRAMA..." << endl;
             break;
         }
     }
-
 }
