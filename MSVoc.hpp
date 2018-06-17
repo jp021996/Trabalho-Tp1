@@ -1,14 +1,11 @@
 #ifndef MSVOC_H_INCLUDED
 #define MSVOC_H_INCLUDED
 
-#include "stubs.hpp"
+#include "interfaces.hpp"
 
 //definition of the class that will access the data base to simulate the service of
 //registering of the system
 class ServicoGestaoVocab : public IS_GestaoVocab{
-    //the object of the registering stub
-    Stub_MS_GestaoVocab stub_MS_GestaoVocab;
-
 public:
     //declaration of the methods foreseen on the interface
     //declaration of the methods to register the user

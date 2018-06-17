@@ -5,9 +5,5 @@ ResultadoAutenticacao ServicoAutenticar::autenticar(const Email &email, const Se
     //the object to be the result of the authentication
     ResultadoAutenticacao resultado;
 
-    //go to the stub class and authenticate
-    resultado = stub_MS_Autenticacao.autenticar(email,senha);
-
-
     return resultado;
 }

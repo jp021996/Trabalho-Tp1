@@ -1,14 +1,11 @@
 #ifndef MSGUS_H_INCLUDED
 #define MSGUS_H_INCLUDED
 
-#include "stubs.hpp"
+#include "interfaces.hpp"
 
 //definition of the class that will access the data base to simulate the service of
 //registering of the system
 class ServicoGestao : public IS_GestaoUsuario{
-    //the object of the registering stub
-    Stub_MS_Gestao stub_MS_Gestao;
-
 public:
     //declaration of the methods foreseen on the interface
     //declaration of the methods to register the user

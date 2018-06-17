@@ -356,8 +356,8 @@
 	"resultados.hpp"
 	<stdexcept>
 
-1529239055 c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\trabalho-tp1\msaut.hpp
-	"stubs.hpp"
+1529240623 c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\trabalho-tp1\msaut.hpp
+	"interfaces.hpp"
 
 1529239055 c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\trabalho-tp1\stubs.hpp
 	"interfaces.hpp"
@@ -370,16 +370,16 @@
 1529239449 c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\trabalho-tp1\magus.hpp
 	"interfaces.hpp"
 
-1529239055 c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\trabalho-tp1\msgus.hpp
-	"stubs.hpp"
+1529240623 c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\trabalho-tp1\msgus.hpp
+	"interfaces.hpp"
 
 1529239055 c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\trabalho-tp1\mavoc.hpp
 	<stdexcept>
 	"interfaces.hpp"
 	"entidades.hpp"
 
-1529239055 c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\trabalho-tp1\msvoc.hpp
-	"stubs.hpp"
+1529240623 c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\trabalho-tp1\msvoc.hpp
+	"interfaces.hpp"
 
 1529239055 source:c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\trabalho-tp1\dominios.cpp
 	"dominios.hpp"
@@ -397,13 +397,13 @@
 1529239055 source:c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\trabalho-tp1\mavoc.cpp
 	"MAVoc.hpp"
 
-1529239055 source:c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\trabalho-tp1\msaut.cpp
+1529240560 source:c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\trabalho-tp1\msaut.cpp
 	"MSAut.hpp"
 
-1529239055 source:c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\trabalho-tp1\msgus.cpp
+1529240560 source:c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\trabalho-tp1\msgus.cpp
 	"MSGUs.hpp"
 
-1529239055 source:c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\trabalho-tp1\msvoc.cpp
+1529240560 source:c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\trabalho-tp1\msvoc.cpp
 	"MSVoc.hpp"
 
 1529239055 source:c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\trabalho-tp1\stubs.cpp
