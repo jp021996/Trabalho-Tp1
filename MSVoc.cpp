@@ -20,12 +20,12 @@ ResultadoLista ServicoGestaoVocab::listarVocabs() throw(runtime_error) {
     try {
     comando.executar();
 
-        //if(comando.listaResultado.size()== 0){
-       // resultado.setValor(ResultadoVocab::FALHA);
-        //}else{
-        resultado.setValor(ResultadoLista::SUCESSO);
-        return resultado;
-        //}
+        if(comando.listaResultado.size()== 0){
+            resultado.setValor(ResultadoVocab::FALHA);
+        }else{
+            resultado.setValor(ResultadoLista::SUCESSO);
+            return resultado;
+        }
 
     }
     catch (EErroPersistencia& e){

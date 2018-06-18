@@ -83,7 +83,7 @@
 	<locale.h>
 	"controladores.hpp"
 
-1529291496 source:c:\users\joaopc\documents\github\trabalho-tp1\mavoc.cpp
+1529292832 source:c:\users\joaopc\documents\github\trabalho-tp1\mavoc.cpp
 	"MAVoc.hpp"
 
 1529280485 source:c:\users\joaopc\documents\github\trabalho-tp1\msaut.cpp
@@ -92,7 +92,7 @@
 1529280485 source:c:\users\joaopc\documents\github\trabalho-tp1\msgus.cpp
 	"MSGUs.hpp"
 
-1529292634 source:c:\users\joaopc\documents\github\trabalho-tp1\msvoc.cpp
+1529292882 source:c:\users\joaopc\documents\github\trabalho-tp1\msvoc.cpp
 	"MSVoc.hpp"
 
 1529280485 source:c:\users\joaopc\documents\github\trabalho-tp1\sqlite3.c

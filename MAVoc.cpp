@@ -61,7 +61,7 @@ Resultado ApresentacaoGestaoVocab::executarLeitor(const Email &email) throw(runt
             resultadoLista = link_MA_MS_GestaoVocab->listarVocabs();
 
             if(resultadoLista.getValor() == ResultadoLista::FALHA){
-                cout << "Ocorreu uma falha no programa" << endl;
+                cout << "Não há vocabulários ou ocorreu uma falha" << endl;
                 cout << comando.listaResultado.size();
             }else{
                 voltas = comando.listaResultado.size();
@@ -93,8 +93,6 @@ Resultado ApresentacaoGestaoVocab::executarLeitor(const Email &email) throw(runt
                 resultadoVocab = link_MA_MS_GestaoVocab->dadosVocab(nomeVocab);
 
                 if(resultadoVocab.getValor() == ResultadoVocab::SUCESSO){
-                    resultado.setValor(Resultado::SUCESSO);
-
 
                     voltas = comando.listaResultado.size();
                     cout << voltas << endl;
