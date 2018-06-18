@@ -6,6 +6,8 @@ ResultadoAutenticacao ServicoAutenticar::autenticar(const Email &email, const Se
     ResultadoAutenticacao resultado;
     //the object to access the database
     ComandoSQL comando;
+    //Voltas is to pop_back the counter, and i is for the for.
+    int voltas,i;
     //the string that will carry the sql command
     string query;
     //the password of the user
@@ -36,11 +38,12 @@ ResultadoAutenticacao ServicoAutenticar::autenticar(const Email &email, const Se
     //get the password from the database
     senhaDatabase = comando.listaResultado.back().getValorColuna();
 
-    //cleaning the list
-    comando.listaResultado.pop_back();
+
 
     //check if the email is on the database
     if(senhaDatabase != ""){
+    //cleaning the list
+    comando.listaResultado.pop_back();
         if(senhaDatabase == senha.getSenha()){
             resultado.setValor(Resultado::SUCESSO);
             resultado.setTipo(1);
@@ -52,8 +55,6 @@ ResultadoAutenticacao ServicoAutenticar::autenticar(const Email &email, const Se
 
             resultado.criarLeitor();
             resultado.setLeitor(*leitor);
-
-            cout << "chegou" << endl;
 
             //deallocating memory of the reader
             delete leitor;
@@ -89,11 +90,10 @@ ResultadoAutenticacao ServicoAutenticar::autenticar(const Email &email, const Se
     //get the password from the database
     senhaDatabase = comando.listaResultado.back().getValorColuna();
 
-    //cleaning the list
-    comando.listaResultado.pop_back();
-
     //check if the email is on the database
     if(senhaDatabase != ""){
+            //cleaning the list
+            comando.listaResultado.pop_back();
         if(senhaDatabase == senha.getSenha()){
             resultado.setValor(Resultado::SUCESSO);
             resultado.setTipo(2);
@@ -118,7 +118,6 @@ ResultadoAutenticacao ServicoAutenticar::autenticar(const Email &email, const Se
             return resultado;
         }
     }
-
         //get password of the email
     query = "SELECT Senha FROM Administrador \
     WHERE Email = '" + email.getEmail() + "';";
@@ -140,11 +139,10 @@ ResultadoAutenticacao ServicoAutenticar::autenticar(const Email &email, const Se
     //get the password from the database
     senhaDatabase = comando.listaResultado.back().getValorColuna();
 
-    //cleaning the list
-    comando.listaResultado.pop_back();
-
     //check if the email is on the database
     if(senhaDatabase != ""){
+        //cleaning the list
+        comando.listaResultado.pop_back();
         if(senhaDatabase == senha.getSenha()){
             resultado.setValor(Resultado::SUCESSO);
             resultado.setTipo(3);

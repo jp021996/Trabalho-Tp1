@@ -159,12 +159,65 @@ ResultadoDefinicao ServicoGestaoVocab::consultarDefinicao(const string& termo) t
     return resultado;
 }
 
-ResultadoEspecifico ServicoGestaoVocab::desenvolvedorDeVocab(const string& nomeVocab) throw(runtime_error) {
+ResultadoEspecifico ServicoGestaoVocab::desenvolvedorDeVocab(const string& nomeVocab, const string& email) throw(runtime_error) {
     //the object to be the result of the registering
     ResultadoEspecifico resultado;
+    int voltas,i;
+
+     //the object that make the SQL comand
+    ComandoSQL comando;
+
+    //create a query to show all the vocabs
+    string query;
+
+
+    query = "SELECT count(Desenvolvedor) FROM VocabDesenvolvedor WHERE Vocabulario = '" +nomeVocab+"';";
+
+    //put the query into the object
+    comando.setComandoSQL(query);
+
+    //execute the command to create the table
+    try {
+        comando.executar();
+        cout << voltas;
+        voltas = comando.listaResultado.size();
+
+                    for(i=0;i<voltas; i++){
+                        cout << comando.listaResultado.back().getNomeColuna() << " : " << comando.listaResultado.back().getValorColuna() << endl;
+                        comando.listaResultado.pop_back();
+                        }
+
+            if(comando.listaResultado.size() >> 5){
+                    resultado.setValor(ResultadoEspecifico::FALHA_2);
+                    return resultado;
+
+            }else{
+                query = "SELECT Nome FROM Vocabulario WHERE Nome = '" +nomeVocab+"';";
+                comando.setComandoSQL(query);
+                comando.executar();
+                if(comando.listaResultado.size() == 0){
+                    resultado.setValor(ResultadoEspecifico::FALHA);
+                    return resultado;
+                }else{
+                    query = "INSERT INTO VocabDesenvolvedor VALUES('" +email+"', '" +nomeVocab+"');";
+                    comando.setComandoSQL(query);
+                    comando.executar();
+                    resultado.setValor(ResultadoEspecifico::SUCESSO);
+                }
+            }
+
+    }
+    catch (EErroPersistencia& e){
+        cerr << e.what();
+        resultado.setValor(ResultadoVocab::FALHA);
+        return resultado;
+    }
+
 
     return resultado;
 }
+
+
 
 ResultadoVocab ServicoGestaoVocab::criarTermo(const Termo& novoTermo, const string& nomeVocab) throw(runtime_error) {
     //the object to be the result of the registering

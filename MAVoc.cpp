@@ -121,6 +121,8 @@ Resultado ApresentacaoGestaoVocab::executarLeitor(const Email &email) throw(runt
             }
 
         }
+
+
         if(opcao == CONSULTAR_TERMO){
 
             ResultadoTermo resultadoTermo;
@@ -273,7 +275,6 @@ Resultado ApresentacaoGestaoVocab::executarDesenvolvedor(const Email &email) thr
 
             if(resultadoLista.getValor() == ResultadoLista::FALHA){
                 cout << "Não há vocabulários ou ocorreu uma falha" << endl;
-                cout << comando.listaResultado.size();
             }else{
                 voltas = comando.listaResultado.size();
 
@@ -331,6 +332,8 @@ Resultado ApresentacaoGestaoVocab::executarDesenvolvedor(const Email &email) thr
             }
 
         }
+
+
         if(opcao == CONSULTAR_TERMO){
 
             ResultadoTermo resultadoTermo;
@@ -425,7 +428,7 @@ Resultado ApresentacaoGestaoVocab::executarDesenvolvedor(const Email &email) thr
 
             try{
 
-                resultadoEspecifico = link_MA_MS_GestaoVocab->desenvolvedorDeVocab(nomeVocab);
+                resultadoEspecifico = link_MA_MS_GestaoVocab->desenvolvedorDeVocab(nomeVocab, email.getEmail());
 
                 if(resultadoEspecifico.getValor() == ResultadoEspecifico::SUCESSO){
                     resultado.setValor(Resultado::SUCESSO);
@@ -964,7 +967,7 @@ Resultado ApresentacaoGestaoVocab::executarAdministrador(const Email &email) thr
 
             try{
 
-                resultadoEspecifico = link_MA_MS_GestaoVocab->desenvolvedorDeVocab(nomeVocab);
+                resultadoEspecifico = link_MA_MS_GestaoVocab->desenvolvedorDeVocab(nomeVocab, email.getEmail());
 
                 if(resultadoEspecifico.getValor() == ResultadoEspecifico::SUCESSO){
                     resultado.setValor(Resultado::SUCESSO);

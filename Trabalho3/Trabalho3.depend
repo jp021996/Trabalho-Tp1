@@ -31,7 +31,7 @@
 	<stdexcept>
 	"interfaces.hpp"
 
-1529280485 c:\users\joaopc\documents\github\trabalho-tp1\interfaces.hpp
+1529297712 c:\users\joaopc\documents\github\trabalho-tp1\interfaces.hpp
 	"resultados.hpp"
 	<stdexcept>
 
@@ -63,7 +63,7 @@
 	"entidades.hpp"
 	"UnidadePersistencia.hpp"
 
-1529283539 c:\users\joaopc\documents\github\trabalho-tp1\msvoc.hpp
+1529297712 c:\users\joaopc\documents\github\trabalho-tp1\msvoc.hpp
 	"interfaces.hpp"
 	"UnidadePersistencia.hpp"
 
@@ -83,16 +83,16 @@
 	<locale.h>
 	"controladores.hpp"
 
-1529295520 source:c:\users\joaopc\documents\github\trabalho-tp1\mavoc.cpp
+1529300630 source:c:\users\joaopc\documents\github\trabalho-tp1\mavoc.cpp
 	"MAVoc.hpp"
 
-1529280485 source:c:\users\joaopc\documents\github\trabalho-tp1\msaut.cpp
+1529300510 source:c:\users\joaopc\documents\github\trabalho-tp1\msaut.cpp
 	"MSAut.hpp"
 
 1529280485 source:c:\users\joaopc\documents\github\trabalho-tp1\msgus.cpp
 	"MSGUs.hpp"
 
-1529295347 source:c:\users\joaopc\documents\github\trabalho-tp1\msvoc.cpp
+1529298763 source:c:\users\joaopc\documents\github\trabalho-tp1\msvoc.cpp
 	"MSVoc.hpp"
 
 1529280485 source:c:\users\joaopc\documents\github\trabalho-tp1\sqlite3.c
