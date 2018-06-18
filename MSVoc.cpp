@@ -292,8 +292,11 @@ ResultadoVocab ServicoGestaoVocab::criarVocabulario(const Vocabulario& vocab, co
 
     tam = comando.listaResultado.size();
 
-    for(counter = 0; counter < tam; counter++){
-        comando.listaResultado.pop_back();
+    if(tam != 0){
+        for(counter = 0; counter < tam; counter++){
+            cout << comando.listaResultado.back().getValorColuna() << endl;
+            comando.listaResultado.pop_back();
+        }
     }
 
     //creating the query to add the vocabulary
@@ -346,12 +349,11 @@ Resultado ServicoGestaoVocab::editarDefinicaoVocab(const Vocabulario& vocab, con
     ComandoSQL comando;
     //create a query to show all the vocabs
     string query;
+    //the id the of the vocabulary
+    string id;
 
     //creating the query to update the definition text of the vocabulary
-    query = "INSERT INTO Vocabulario VALUES('" +
-    vocab.getNome() + "','" + defVocab.getTexto() +
-    "','" + vocab.getData() + "','" + vocab.getIdioma();
-//    "','" + str + "');";
+    query = "SELECT Definicao FROM Vocabulario WHERE Nome = '" + vocab.getNome() + "';";
 
     //put the query into the object
     comando.setComandoSQL(query);
@@ -366,6 +368,31 @@ Resultado ServicoGestaoVocab::editarDefinicaoVocab(const Vocabulario& vocab, con
         resultado.setValor(Resultado::FALHA);
         return resultado;
     }
+
+    //getting the id of the definition of the vocabulary
+    id = comando.listaResultado.back().getValorColuna();
+    cout << id << endl;
+    //removing the item of the list
+    comando.listaResultado.pop_back();
+
+    query = "UPDATE Definicao SET Data = '" + defVocab.getData() + "'," +
+    "TextoDefinicao = '" + defVocab.getTexto() + "' WHERE Id = " + id + ";";
+
+    //put the query into the object
+    comando.setComandoSQL(query);
+
+    //execute the command to create the table
+    try {
+        comando.executar();
+    }
+    catch (EErroPersistencia& e){
+        cerr << e.what();
+        system("pause");
+        resultado.setValor(Resultado::FALHA);
+        return resultado;
+    }
+
+    resultado.setValor(Resultado::SUCESSO);
 
     return resultado;
 }
