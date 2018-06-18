@@ -277,6 +277,104 @@ ResultadoInicializacao Controle::inicializar(){
         resultadoInicializacao.setValor(Resultado::FALHA);
         return resultadoInicializacao;
     }
+        
+    //create the table of the terms if it doesn't exist
+    query = "CREATE TABLE IF NOT EXISTS Termo (\
+    Nome varchar(20), \
+    Data date, \
+    ClasseTermo varchar(2), \
+    PRIMARY KEY(Nome));";
+
+    //put the query into the object
+    comando.setComandoSQL(query);
+
+    //execute the command to create the table
+    try {
+        comando.executar();
+    }
+    catch (EErroPersistencia& e){
+        cerr << e.what();
+        resultadoInicializacao.setValor(Resultado::FALHA);
+        return resultadoInicializacao;
+    }
+
+    //create the table of the definition if it doesn't exist
+    query = "CREATE TABLE IF NOT EXISTS Definicao (\
+    Id int AUTO_INCREMENT, \
+    Data date, \
+    TextoDefinicao varchar(30), \
+    PRIMARY KEY(Id));";
+
+    //put the query into the object
+    comando.setComandoSQL(query);
+
+    //execute the command to create the table
+    try {
+        comando.executar();
+    }
+    catch (EErroPersistencia& e){
+        cerr << e.what();
+        resultadoInicializacao.setValor(Resultado::FALHA);
+        return resultadoInicializacao;
+    }
+
+    //create the table of the vocab if it doesn't exist
+    query = "CREATE TABLE IF NOT EXISTS Vocabulario (\
+    Nome varchar(20) , \
+    Definicao  REFERENCES Definicao(Id), \
+    Data date, \
+    Idioma varchar(3), \
+    Administrador REFERENCES Administrador(Email),\
+    PRIMARY KEY(Nome));";
+
+    //put the query into the object
+    comando.setComandoSQL(query);
+
+    //execute the command to create the table
+    try {
+        comando.executar();
+    }
+    catch (EErroPersistencia& e){
+        cerr << e.what();
+        resultadoInicializacao.setValor(Resultado::FALHA);
+        return resultadoInicializacao;
+    }
+
+    //create the table of the relationship of term and definition if it doesn't exist
+    query = "CREATE TABLE IF NOT EXISTS TermoDef (\
+    Termo REFERENCES Termo(Nome), \
+    Definicao REFERENCES Definicao(Id)\);";
+
+    //put the query into the object
+    comando.setComandoSQL(query);
+
+    //execute the command to create the table
+    try {
+        comando.executar();
+    }
+    catch (EErroPersistencia& e){
+        cerr << e.what();
+        resultadoInicializacao.setValor(Resultado::FALHA);
+        return resultadoInicializacao;
+    }
+
+    //create the table of the relationship of vocab and definition if it doesn't exist
+    query = "CREATE TABLE IF NOT EXISTS VocabDef (\
+    Vocabulario  REFERENCES Vocabulario(Nome), \
+    Desenvolvedor varchar(30)\);";
+
+    //put the query into the object
+    comando.setComandoSQL(query);
+
+    //execute the command to create the table
+    try {
+        comando.executar();
+    }
+    catch (EErroPersistencia& e){
+        cerr << e.what();
+        resultadoInicializacao.setValor(Resultado::FALHA);
+        return resultadoInicializacao;
+    }
 
     //clean the screen
     system("cls");
@@ -371,7 +469,7 @@ ResultadoCadastro Controle::cadastrar(){
     while(true){
         //clean the screen
         system("cls");
-        cout << "**********  GESTOR DE VOCABULÁRIOS CONTROLADOS  **********" << endl;
+        cout << "**********  GESTOR DE VOCABULÃRIOS CONTROLADOS  **********" << endl;
         cout << "**********              CRIAR CONTA             **********" << endl << endl;
 
         //get from the user the type of account
