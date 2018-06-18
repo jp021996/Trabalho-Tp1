@@ -23,7 +23,7 @@ public:
     ResultadoDefinicao editarDefinicao(const Definicao&, const Definicao&) throw(runtime_error);
     Resultado excluirDefinicao(const Definicao&) throw(runtime_error);
     //
-    ResultadoVocab criarVocabulario(const Vocabulario&, const Definicao&) throw(runtime_error);
+    ResultadoVocab criarVocabulario(const Vocabulario&, const Definicao&, const string&) throw(runtime_error);
     Resultado editarDefinicaoVocab(const Vocabulario&, const Definicao&) throw(runtime_error);
     Resultado editarIdiomaVocab(const Vocabulario&, const Idioma&) throw(runtime_error);
     Resultado excluirVocabulario(const Vocabulario&) throw(runtime_error);

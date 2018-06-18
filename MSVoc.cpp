@@ -121,7 +121,6 @@ ResultadoTermo ServicoGestaoVocab::consultarTermo(const string& nomeTermo) throw
     return resultado;
 }
 
-
 ResultadoDefinicao ServicoGestaoVocab::consultarDefinicao(const string& termo) throw(runtime_error) {
     //the object to be the result of the registering
     ResultadoDefinicao resultado;
@@ -221,7 +220,6 @@ ResultadoEspecifico ServicoGestaoVocab::desenvolvedorDeVocab(const string& nomeV
 }
 
 
-
 ResultadoVocab ServicoGestaoVocab::criarTermo(const Termo& novoTermo, const string& nomeVocab) throw(runtime_error) {
     //the object to be the result of the registering
     ResultadoVocab resultado;
@@ -264,9 +262,35 @@ Resultado ServicoGestaoVocab::excluirDefinicao(const Definicao& definicao) throw
     return resultado;
 }
 
-ResultadoVocab ServicoGestaoVocab::criarVocabulario(const Vocabulario& vocab, const Definicao& defVocab) throw(runtime_error) {
+ResultadoVocab ServicoGestaoVocab::criarVocabulario(const Vocabulario& vocab, const Definicao& defVocab, const string& str) throw(runtime_error) {
     //the object to be the result of the registering
     ResultadoVocab resultado;
+    //the object that make the SQL comand
+    ComandoSQL comando;
+    //create a query to show all the vocabs
+    string query;
+
+    //creating the query to add the vocabulary
+    query = "INSERT INTO Vocabulario VALUES('" +
+    vocab.getNome() + "','" + defVocab.getTexto() +
+    "','" + vocab.getData() + "','" + vocab.getIdioma() +
+    "','" + str + "');";
+
+    //put the query into the object
+    comando.setComandoSQL(query);
+
+    //execute the command to create the table
+    try {
+        comando.executar();
+    }
+    catch (EErroPersistencia& e){
+        cerr << e.what();
+        system("pause");
+        resultado.setValor(Resultado::FALHA);
+        return resultado;
+    }
+
+    resultado.setValor(Resultado::SUCESSO);
 
     return resultado;
 }
