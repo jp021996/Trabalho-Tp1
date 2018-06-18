@@ -16,7 +16,7 @@ public:
     ResultadoDefinicao consultarDefinicao (const string&) throw(runtime_error);
     //
     ResultadoEspecifico desenvolvedorDeVocab(const string&, const string&) throw(runtime_error);
-    ResultadoVocab criarTermo(const Termo&, const string&) throw(runtime_error);
+    ResultadoVocab criarTermo(const Termo&, const string&, const string&) throw(runtime_error);
     ResultadoTermo editarTermo(const Termo&, const Termo&) throw(runtime_error);
     ResultadoTermo excluirTermo(const Termo&) throw(runtime_error);
     ResultadoDefinicao criarDefinicao(const Definicao&) throw(runtime_error);

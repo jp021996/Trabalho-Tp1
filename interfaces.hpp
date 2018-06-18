@@ -119,7 +119,7 @@ public:
     virtual ResultadoDefinicao consultarDefinicao (const string&) throw(runtime_error)= 0; //SUCESSO: existe,  FALHA: nao existe
     //
     virtual ResultadoEspecifico desenvolvedorDeVocab(const string&, const string&) throw(runtime_error)= 0; //SUCESSO: existe vocab,  FALHA: nao existe vocab OU vocab ja tem 10 dsv's
-    virtual ResultadoVocab criarTermo(const Termo&, const string&) throw(runtime_error)= 0;
+    virtual ResultadoVocab criarTermo(const Termo&, const string&, const string&) throw(runtime_error)= 0;
     virtual ResultadoTermo editarTermo(const Termo&, const Termo&) throw(runtime_error)= 0; //SUCESSO: ok,    FALHA: nao existe
     virtual ResultadoTermo excluirTermo(const Termo&) throw(runtime_error)= 0; //SUCESSO: ok,    FALHA: nao existe
     virtual ResultadoDefinicao criarDefinicao(const Definicao&) throw(runtime_error)= 0; //SUCESSO: ok   //FALHA: termo nao existe OU termo com mais de 5

@@ -221,9 +221,76 @@ ResultadoEspecifico ServicoGestaoVocab::desenvolvedorDeVocab(const string& nomeV
 
 
 
-ResultadoVocab ServicoGestaoVocab::criarTermo(const Termo& novoTermo, const string& nomeVocab) throw(runtime_error) {
+ResultadoVocab ServicoGestaoVocab::criarTermo(const Termo& novoTermo, const string& nomeVocab, const string& email) throw(runtime_error) {
     //the object to be the result of the registering
     ResultadoVocab resultado;
+
+    //the object that make the SQL comand
+    ComandoSQL comando;
+    //Voltas is rhw number of loops in for, and i is the count
+    int i, voltas, j;
+
+    //create a query to show all the vocabs
+    string query;
+
+
+    query = "SELECT Nome FROM Termo WHERE Nome = '" +novoTermo.getNome()+"';";
+
+    //put the query into the object
+    comando.setComandoSQL(query);
+
+    //execute the command to create the table
+    try {
+    comando.executar();
+
+        if(comando.listaResultado.size()>= 1){
+                comando.listaResultado.pop_back();
+                throw runtime_error("Já existe um termo com este nome");
+
+        }else{
+            cout <<"Entrou";
+            query = "SELECT Nome FROM Vocabulario WHERE Nome = '"+nomeVocab+"';";
+            comando.setComandoSQL(query);
+            comando.executar();
+            if(comando.listaResultado.size() == 0){
+                resultado.setValor(ResultadoVocab::FALHA);
+                return resultado;
+            }else{
+                cout <<"Entrou";
+                query = "SELECT Desenvolvedor FROM VocabDesenvolvedor WHERE Vocabulario = '"+nomeVocab+"';";
+                comando.setComandoSQL(query);
+                comando.executar();
+                voltas = comando.listaResultado.size();
+                for(i=0;i<voltas;i++){
+                        cout <<"Entrou";
+                    if(comando.listaResultado.back().getValorColuna() != email){
+                        comando.listaResultado.pop_back();
+                        resultado.setValor(ResultadoVocab::PERMISSAO_NEGADA);
+                    }else{
+                        voltas = comando.listaResultado.size();
+                        for(j=0;j<voltas;j++){
+                            comando.listaResultado.pop_back();
+                        }
+                        query = "INSERT INTO Termo VALUES('" +novoTermo.getNome()+"','" +novoTermo.getData()+"', '', '" +nomeVocab+"');";
+                        comando.setComandoSQL(query);
+                        comando.executar();
+                        resultado.setValor(ResultadoVocab::SUCESSO);
+                        break;
+
+                    }
+
+                }
+            }
+
+        }
+
+    }
+    catch (EErroPersistencia& e){
+        cerr << e.what();
+        resultado.setValor(ResultadoVocab::FALHA);
+        return resultado;
+    }
+
 
     return resultado;
 }
