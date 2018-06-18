@@ -20,7 +20,12 @@ ResultadoLista ServicoGestaoVocab::listarVocabs() throw(runtime_error) {
     try {
     comando.executar();
 
+        //if(comando.listaResultado.size()== 0){
+       // resultado.setValor(ResultadoVocab::FALHA);
+        //}else{
         resultado.setValor(ResultadoLista::SUCESSO);
+        return resultado;
+        //}
 
     }
     catch (EErroPersistencia& e){
@@ -29,13 +34,46 @@ ResultadoLista ServicoGestaoVocab::listarVocabs() throw(runtime_error) {
         return resultado;
     }
 
-
-    return resultado;
 }
 
 ResultadoVocab ServicoGestaoVocab::dadosVocab(const string& nomeVocab) throw(runtime_error) {
     //the object to be the result of the registering
     ResultadoVocab resultado;
+
+    //the object that make the SQL comand
+    ComandoSQL comando;
+
+    //create a query to show all the vocabs
+    string query;
+
+
+    query = "SELECT * FROM Vocabulario WHERE Nome = '" +nomeVocab+"';";
+
+    //put the query into the object
+    comando.setComandoSQL(query);
+
+    //execute the command to create the table
+    try {
+    comando.executar();
+
+    query = "SELECT Desenvolvedor FROM VocabDesenvolvedor WHERE Vocabulario= '" +nomeVocab+"';";
+    //put the query into the object
+    comando.setComandoSQL(query);
+    comando.executar();
+
+        if(comando.listaResultado.size()== 0){
+        resultado.setValor(ResultadoVocab::FALHA);
+
+        }else{
+            resultado.setValor(ResultadoVocab::SUCESSO);
+        }
+
+    }
+    catch (EErroPersistencia& e){
+        cerr << e.what();
+        resultado.setValor(ResultadoVocab::FALHA);
+        return resultado;
+    }
 
     return resultado;
 }

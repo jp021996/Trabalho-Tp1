@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1529282983 source:c:\users\joaopc\documents\github\trabalho-tp1\controladores.cpp
+1529290022 source:c:\users\joaopc\documents\github\trabalho-tp1\controladores.cpp
 	"controladores.hpp"
 
 1529280485 c:\users\joaopc\documents\github\trabalho-tp1\controladores.hpp
@@ -83,7 +83,7 @@
 	<locale.h>
 	"controladores.hpp"
 
-1529287923 source:c:\users\joaopc\documents\github\trabalho-tp1\mavoc.cpp
+1529291496 source:c:\users\joaopc\documents\github\trabalho-tp1\mavoc.cpp
 	"MAVoc.hpp"
 
 1529280485 source:c:\users\joaopc\documents\github\trabalho-tp1\msaut.cpp
@@ -92,7 +92,7 @@
 1529280485 source:c:\users\joaopc\documents\github\trabalho-tp1\msgus.cpp
 	"MSGUs.hpp"
 
-1529288547 source:c:\users\joaopc\documents\github\trabalho-tp1\msvoc.cpp
+1529292634 source:c:\users\joaopc\documents\github\trabalho-tp1\msvoc.cpp
 	"MSVoc.hpp"
 
 1529280485 source:c:\users\joaopc\documents\github\trabalho-tp1\sqlite3.c

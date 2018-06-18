@@ -359,7 +359,7 @@ ResultadoInicializacao Controle::inicializar(){
     }
 
     //create the table of the relationship of vocab and definition if it doesn't exist
-    query = "CREATE TABLE IF NOT EXISTS VocabDef (\
+    query = "CREATE TABLE IF NOT EXISTS VocabDesenvolvedor (\
     Vocabulario  REFERENCES Vocabulario(Nome), \
     Desenvolvedor varchar(30)\);";
 

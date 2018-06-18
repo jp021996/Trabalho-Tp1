@@ -60,14 +60,15 @@ Resultado ApresentacaoGestaoVocab::executarLeitor(const Email &email) throw(runt
 
             resultadoLista = link_MA_MS_GestaoVocab->listarVocabs();
 
-            if(resultado.getValor() == ResultadoLista::FALHA){
+            if(resultadoLista.getValor() == ResultadoLista::FALHA){
                 cout << "Ocorreu uma falha no programa" << endl;
+                cout << comando.listaResultado.size();
             }else{
                 voltas = comando.listaResultado.size();
 
                 cout << "O número de vocabulários é: " << voltas<< endl;
-                cout <<"O programa funcionou corretemante" << endl;
-                 //print on the scream the vocabs
+
+                 //print on the scream the name of vocabs
                 for(i=0;i<voltas; i++){
                     cout << comando.listaResultado.back().getNomeColuna() << " : " << comando.listaResultado.back().getValorColuna() << endl;
                     comando.listaResultado.pop_back();
@@ -94,22 +95,17 @@ Resultado ApresentacaoGestaoVocab::executarLeitor(const Email &email) throw(runt
                 if(resultadoVocab.getValor() == ResultadoVocab::SUCESSO){
                     resultado.setValor(Resultado::SUCESSO);
 
-                    int numeroTermos = resultadoVocab.getNomesTermosVocab().size();
-                    int numeroDesenv = resultadoVocab.getNomesDesenvolvedores().size();
+
+                    voltas = comando.listaResultado.size();
+                    cout << voltas << endl;
 
                     cout << "Dados do Vocabulario: "<<endl;
-                    cout << "> Nome: " << resultadoVocab.getVocab().getNome() << endl;
-                    cout << "> Idioma: " << resultadoVocab.getVocab().getIdioma() << endl;
-                    cout << "> Data: " << resultadoVocab.getVocab().getData() << endl;
-                    cout << "> Administrador: " << resultadoVocab.getNomeAdm() << endl;
-                    cout << "> Desenvolvedores (" << numeroDesenv << "): "<<endl;
-                    for(int i=0; i<numeroDesenv; i++){
-                        cout << "    - "<< resultadoVocab.getNomesDesenvolvedores()[i] << endl;
-                    }
-                    cout << "> Termos (" << numeroTermos << "): "<<endl;
-                    for(int i=0; i<numeroTermos; i++){
-                        cout << "    - "<< resultadoVocab.getNomesTermosVocab()[i]  << endl;
-                    }
+                    //print on the scream the data of vocabs
+                    for(i=0;i<voltas; i++){
+                        cout << comando.listaResultado.back().getNomeColuna() << " : " << comando.listaResultado.back().getValorColuna() << endl;
+                        comando.listaResultado.pop_back();
+                        }
+
                     cout << endl;
                 }
                 if(resultadoVocab.getValor() == ResultadoVocab::FALHA){
