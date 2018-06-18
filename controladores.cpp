@@ -283,6 +283,7 @@ ResultadoInicializacao Controle::inicializar(){
     Nome varchar(20), \
     Data date, \
     ClasseTermo varchar(2), \
+    Vocabulario REFERENCES Vocabulario(Nome), \
     PRIMARY KEY(Nome));";
 
     //put the query into the object
