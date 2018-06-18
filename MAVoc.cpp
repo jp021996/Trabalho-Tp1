@@ -33,6 +33,7 @@ Resultado ApresentacaoGestaoVocab::executarLeitor(const Email &email) throw(runt
     int opcao, voltas, i;
     Resultado resultado;
     ComandoSQL comando;
+    Nome nome;
 
     const int LISTAR_VOCABS = 1;
     const int MOSTRAR_DADOS = 2;
@@ -89,7 +90,7 @@ Resultado ApresentacaoGestaoVocab::executarLeitor(const Email &email) throw(runt
             cout << endl;
 
             try{
-
+                nome.setNome(nomeVocab);
                 resultadoVocab = link_MA_MS_GestaoVocab->dadosVocab(nomeVocab);
 
                 if(resultadoVocab.getValor() == ResultadoVocab::SUCESSO){
@@ -129,6 +130,7 @@ Resultado ApresentacaoGestaoVocab::executarLeitor(const Email &email) throw(runt
             cin >> nomeTermo;
 
             try{
+                nome.setNome(nomeTermo);
                 resultadoTermo = link_MA_MS_GestaoVocab->consultarTermo(nomeTermo);
 
                 if(resultadoTermo.getValor() == ResultadoTermo::SUCESSO){
@@ -163,29 +165,26 @@ Resultado ApresentacaoGestaoVocab::executarLeitor(const Email &email) throw(runt
         if(opcao == CONSULTAR_DEFINICAO){
 
             ResultadoDefinicao resultadoDefinicao;
-            string textoDef;
+            string termo;
 
             fflush(stdin);
-            cout << "Digite um trecho do texto a ser pesquisado: ";
-            getline(cin,textoDef);
+            cout << "Digite o termo o qual deseja saber a definição: ";
+            getline(cin,termo);
             //fflush(stdin);
 
             try{
-                resultadoDefinicao = link_MA_MS_GestaoVocab->consultarDefinicao(textoDef);
+                nome.setNome(termo);
+                resultadoDefinicao = link_MA_MS_GestaoVocab->consultarDefinicao(termo);
 
                 if(resultadoDefinicao.getValor() == Resultado::SUCESSO){
                     resultado.setValor(Resultado::SUCESSO);
 
-                    int numeroTermosDef = resultadoDefinicao.getTermosDef().size();
+                    //print on the scream the data of definitions
+                    for(i=0;i<voltas; i++){
+                        cout << comando.listaResultado.back().getNomeColuna() << " : " << comando.listaResultado.back().getValorColuna() << endl;
+                        comando.listaResultado.pop_back();
+                        }
 
-                    cout << "> Texto da definicao: '"<< resultadoDefinicao.getDefinicao().getTexto() <<"'"<<endl;
-                    cout << "> Data da definicao: " << resultadoDefinicao.getDefinicao().getData() << endl;
-                    cout << "> Numero de termos associados (" << numeroTermosDef << "): "  << endl;
-                    for(int i=0; i<numeroTermosDef; i++){
-                        cout << "     "<<i+1<<") "<< resultadoDefinicao.getTermosDef()[i].getNome();
-                        cout << "[Data: " << resultadoDefinicao.getTermosDef()[i].getData() <<"] ";
-                        cout << "[Preferencia: " << resultadoDefinicao.getTermosDef()[i].getPreferencia()<<"]"<<endl;
-                    }
                     cout << endl;
                 }
                 if(resultadoDefinicao.getValor() == ResultadoDefinicao::FALHA){
@@ -208,6 +207,7 @@ Resultado ApresentacaoGestaoVocab::executarLeitor(const Email &email) throw(runt
 
         if(opcao == SAIR){
             resultado.setValor(Resultado::SUCESSO);
+            return resultado;
         }
         if(opcao <0 || opcao>4){
             resultado.setValor(Resultado::FALHA);
