@@ -320,7 +320,7 @@
 1523926890 c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\testes.hpp
 	"entidades.hpp"
 
-1529248148 source:c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\trabalho-tp1\controladores.cpp
+1529343327 source:c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\trabalho-tp1\controladores.cpp
 	"controladores.hpp"
 
 1529248101 c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\trabalho-tp1\controladores.hpp
@@ -352,7 +352,7 @@
 	<stdexcept>
 	"interfaces.hpp"
 
-1529276791 c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\trabalho-tp1\interfaces.hpp
+1529339099 c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\trabalho-tp1\interfaces.hpp
 	"resultados.hpp"
 	<stdexcept>
 
@@ -375,13 +375,15 @@
 	"interfaces.hpp"
 	"UnidadePersistencia.hpp"
 
-1529239055 c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\trabalho-tp1\mavoc.hpp
+1529334891 c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\trabalho-tp1\mavoc.hpp
 	<stdexcept>
 	"interfaces.hpp"
 	"entidades.hpp"
+	"UnidadePersistencia.hpp"
 
-1529240623 c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\trabalho-tp1\msvoc.hpp
+1529339099 c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\trabalho-tp1\msvoc.hpp
 	"interfaces.hpp"
+	"UnidadePersistencia.hpp"
 
 1529239055 source:c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\trabalho-tp1\dominios.cpp
 	"dominios.hpp"
@@ -396,16 +398,16 @@
 	<locale.h>
 	"controladores.hpp"
 
-1529239055 source:c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\trabalho-tp1\mavoc.cpp
+1529339099 source:c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\trabalho-tp1\mavoc.cpp
 	"MAVoc.hpp"
 
-1529277372 source:c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\trabalho-tp1\msaut.cpp
+1529335297 source:c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\trabalho-tp1\msaut.cpp
 	"MSAut.hpp"
 
-1529277833 source:c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\trabalho-tp1\msgus.cpp
+1529281591 source:c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\trabalho-tp1\msgus.cpp
 	"MSGUs.hpp"
 
-1529240560 source:c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\trabalho-tp1\msvoc.cpp
+1529345031 source:c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\trabalho-tp1\msvoc.cpp
 	"MSVoc.hpp"
 
 1529239055 source:c:\users\cgaa1\documents\unb\semestre_9\tp1\trabalho_3\trabalho-tp1\stubs.cpp

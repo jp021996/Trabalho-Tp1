@@ -301,7 +301,7 @@ ResultadoInicializacao Controle::inicializar(){
 
     //create the table of the definition if it doesn't exist
     query = "CREATE TABLE IF NOT EXISTS Definicao (\
-    Id int AUTO_INCREMENT, \
+    Id int, \
     Data date, \
     TextoDefinicao varchar(30), \
     PRIMARY KEY(Id));";
@@ -344,7 +344,7 @@ ResultadoInicializacao Controle::inicializar(){
     //create the table of the relationship of term and definition if it doesn't exist
     query = "CREATE TABLE IF NOT EXISTS TermoDef (\
     Termo REFERENCES Termo(Nome), \
-    Definicao REFERENCES Definicao(Id)\);";
+    Definicao REFERENCES Definicao(Id));";
 
     //put the query into the object
     comando.setComandoSQL(query);
@@ -362,7 +362,7 @@ ResultadoInicializacao Controle::inicializar(){
     //create the table of the relationship of vocab and definition if it doesn't exist
     query = "CREATE TABLE IF NOT EXISTS VocabDesenvolvedor (\
     Vocabulario  REFERENCES Vocabulario(Nome), \
-    Desenvolvedor varchar(30)\);";
+    Desenvolvedor varchar(30));";
 
     //put the query into the object
     comando.setComandoSQL(query);

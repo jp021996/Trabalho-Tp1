@@ -1348,7 +1348,7 @@ Resultado ApresentacaoGestaoVocab::executarAdministrador(const Email &email) thr
 
                 try{
 
-                    resultadoVocab = link_MA_MS_GestaoVocab->criarVocabulario(vocab,defVocab);
+                    resultadoVocab = link_MA_MS_GestaoVocab->criarVocabulario(vocab,defVocab, email.getEmail());
 
                     if(resultadoVocab.getValor() == ResultadoVocab::SUCESSO){
                         resultado.setValor(Resultado::SUCESSO);

@@ -11,7 +11,7 @@ ResultadoLista ServicoGestaoVocab::listarVocabs() throw(runtime_error) {
     string query;
 
 
-    query = "SELECT Nome FROM Vocabulario";
+    query = "SELECT Nome FROM Vocabulario;";
 
     //put the query into the object
     comando.setComandoSQL(query);
@@ -22,6 +22,7 @@ ResultadoLista ServicoGestaoVocab::listarVocabs() throw(runtime_error) {
 
         if(comando.listaResultado.size()== 0){
             resultado.setValor(ResultadoVocab::FALHA);
+            return resultado;
         }else{
             resultado.setValor(ResultadoLista::SUCESSO);
             return resultado;
@@ -119,7 +120,6 @@ ResultadoTermo ServicoGestaoVocab::consultarTermo(const string& nomeTermo) throw
 
     return resultado;
 }
-
 
 ResultadoDefinicao ServicoGestaoVocab::consultarDefinicao(const string& termo) throw(runtime_error) {
     //the object to be the result of the registering
@@ -220,8 +220,12 @@ ResultadoEspecifico ServicoGestaoVocab::desenvolvedorDeVocab(const string& nomeV
 }
 
 
+<<<<<<< HEAD
 
 ResultadoVocab ServicoGestaoVocab::criarTermo(const Termo& novoTermo, const string& nomeVocab, const string& email) throw(runtime_error) {
+=======
+ResultadoVocab ServicoGestaoVocab::criarTermo(const Termo& novoTermo, const string& nomeVocab) throw(runtime_error) {
+>>>>>>> af8d4518a3b1155268eb871bef52db55e685d06a
     //the object to be the result of the registering
     ResultadoVocab resultado;
 
@@ -330,9 +334,82 @@ Resultado ServicoGestaoVocab::excluirDefinicao(const Definicao& definicao) throw
     return resultado;
 }
 
-ResultadoVocab ServicoGestaoVocab::criarVocabulario(const Vocabulario& vocab, const Definicao& defVocab) throw(runtime_error) {
+ResultadoVocab ServicoGestaoVocab::criarVocabulario(const Vocabulario& vocab, const Definicao& defVocab, const string& str) throw(runtime_error) {
     //the object to be the result of the registering
     ResultadoVocab resultado;
+    //the object that make the SQL comand
+    ComandoSQL comando;
+    //create a query to show all the vocabs
+    string query;
+    //the length of the list
+    int tam;
+    //a regular counter
+    int counter;
+
+    //creating the query to get the id
+    query = "SELECT Id FROM Definicao;";
+
+    comando.setComandoSQL(query);
+
+    //execute the command to create the table
+    try {
+        comando.executar();
+    }
+    catch (EErroPersistencia& e){
+        cerr << e.what();
+        system("pause");
+        resultado.setValor(Resultado::FALHA);
+        return resultado;
+    }
+
+    tam = comando.listaResultado.size();
+
+    if(tam != 0){
+        for(counter = 0; counter < tam; counter++){
+            cout << comando.listaResultado.back().getValorColuna() << endl;
+            comando.listaResultado.pop_back();
+        }
+    }
+
+    //creating the query to add the vocabulary
+    query = "INSERT INTO Definicao VALUES(" + to_string(tam+1) + ",'" +
+    defVocab.getData() + "','" + defVocab.getTexto() + "');";
+
+     //put the query into the object
+    comando.setComandoSQL(query);
+
+    //execute the command to create the table
+    try {
+        comando.executar();
+    }
+    catch (EErroPersistencia& e){
+        cerr << e.what();
+        system("pause");
+        resultado.setValor(Resultado::FALHA);
+        return resultado;
+    }
+
+    //creating the query to add the vocabulary
+    query = "INSERT INTO Vocabulario VALUES('" +
+    vocab.getNome() + "','" + to_string(tam+1) +
+    "','" + vocab.getData() + "','" + vocab.getIdioma() +
+    "','" + str + "');";
+
+    //put the query into the object
+    comando.setComandoSQL(query);
+
+    //execute the command to create the table
+    try {
+        comando.executar();
+    }
+    catch (EErroPersistencia& e){
+        cerr << e.what();
+        system("pause");
+        resultado.setValor(Resultado::FALHA);
+        return resultado;
+    }
+
+    resultado.setValor(Resultado::SUCESSO);
 
     return resultado;
 }
@@ -340,6 +417,54 @@ ResultadoVocab ServicoGestaoVocab::criarVocabulario(const Vocabulario& vocab, co
 Resultado ServicoGestaoVocab::editarDefinicaoVocab(const Vocabulario& vocab, const Definicao& defVocab) throw(runtime_error) {
     //the object to be the result of the registering
     Resultado resultado;
+    //the object that make the SQL comand
+    ComandoSQL comando;
+    //create a query to show all the vocabs
+    string query;
+    //the id the of the vocabulary
+    string id;
+
+    //creating the query to update the definition text of the vocabulary
+    query = "SELECT Definicao FROM Vocabulario WHERE Nome = '" + vocab.getNome() + "';";
+
+    //put the query into the object
+    comando.setComandoSQL(query);
+
+    //execute the command to create the table
+    try {
+        comando.executar();
+    }
+    catch (EErroPersistencia& e){
+        cerr << e.what();
+        system("pause");
+        resultado.setValor(Resultado::FALHA);
+        return resultado;
+    }
+
+    //getting the id of the definition of the vocabulary
+    id = comando.listaResultado.back().getValorColuna();
+    cout << id << endl;
+    //removing the item of the list
+    comando.listaResultado.pop_back();
+
+    query = "UPDATE Definicao SET Data = '" + defVocab.getData() + "'," +
+    "TextoDefinicao = '" + defVocab.getTexto() + "' WHERE Id = " + id + ";";
+
+    //put the query into the object
+    comando.setComandoSQL(query);
+
+    //execute the command to create the table
+    try {
+        comando.executar();
+    }
+    catch (EErroPersistencia& e){
+        cerr << e.what();
+        system("pause");
+        resultado.setValor(Resultado::FALHA);
+        return resultado;
+    }
+
+    resultado.setValor(Resultado::SUCESSO);
 
     return resultado;
 }

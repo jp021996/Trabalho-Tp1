@@ -6,8 +6,6 @@ ResultadoAutenticacao ServicoAutenticar::autenticar(const Email &email, const Se
     ResultadoAutenticacao resultado;
     //the object to access the database
     ComandoSQL comando;
-    //Voltas is to pop_back the counter, and i is for the for.
-    int voltas,i;
     //the string that will carry the sql command
     string query;
     //the password of the user
