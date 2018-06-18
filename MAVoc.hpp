@@ -5,6 +5,7 @@
 
 #include "interfaces.hpp"
 #include "entidades.hpp"
+#include "UnidadePersistencia.hpp"
 
 
 using namespace std;

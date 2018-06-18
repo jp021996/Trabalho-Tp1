@@ -30,8 +30,9 @@ Resultado ApresentacaoGestaoVocab::executar(ResultadoAutenticacao &autenticado) 
 
 Resultado ApresentacaoGestaoVocab::executarLeitor(const Email &email) throw(runtime_error){
 
-    int opcao;
+    int opcao, voltas, i;
     Resultado resultado;
+    ComandoSQL comando;
 
     const int LISTAR_VOCABS = 1;
     const int MOSTRAR_DADOS = 2;
@@ -62,7 +63,15 @@ Resultado ApresentacaoGestaoVocab::executarLeitor(const Email &email) throw(runt
             if(resultado.getValor() == ResultadoLista::FALHA){
                 cout << "Ocorreu uma falha no programa" << endl;
             }else{
+                voltas = comando.listaResultado.size();
+
+                cout << "O número de vocabulários é: " << voltas<< endl;
                 cout <<"O programa funcionou corretemante" << endl;
+                 //print on the scream the vocabs
+                for(i=0;i<voltas; i++){
+                    cout << comando.listaResultado.back().getNomeColuna() << " : " << comando.listaResultado.back().getValorColuna() << endl;
+                    comando.listaResultado.pop_back();
+                }
             }
 
             cout << endl;

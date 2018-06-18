@@ -57,10 +57,11 @@
 	"interfaces.hpp"
 	"UnidadePersistencia.hpp"
 
-1529280485 c:\users\joaopc\documents\github\trabalho-tp1\mavoc.hpp
+1529288753 c:\users\joaopc\documents\github\trabalho-tp1\mavoc.hpp
 	<stdexcept>
 	"interfaces.hpp"
 	"entidades.hpp"
+	"UnidadePersistencia.hpp"
 
 1529283539 c:\users\joaopc\documents\github\trabalho-tp1\msvoc.hpp
 	"interfaces.hpp"
@@ -91,7 +92,7 @@
 1529280485 source:c:\users\joaopc\documents\github\trabalho-tp1\msgus.cpp
 	"MSGUs.hpp"
 
-1529287651 source:c:\users\joaopc\documents\github\trabalho-tp1\msvoc.cpp
+1529288547 source:c:\users\joaopc\documents\github\trabalho-tp1\msvoc.cpp
 	"MSVoc.hpp"
 
 1529280485 source:c:\users\joaopc\documents\github\trabalho-tp1\sqlite3.c
