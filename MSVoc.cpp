@@ -171,7 +171,7 @@ ResultadoEspecifico ServicoGestaoVocab::desenvolvedorDeVocab(const string& nomeV
     string query;
 
 
-    query = "SELECT count(Desenvolvedor) FROM VocabDesenvolvedor WHERE Vocabulario = '" +nomeVocab+"';";
+    query = "SELECT Desenvolvedor FROM VocabDesenvolvedor WHERE Vocabulario = '" +nomeVocab+"';";
 
     //put the query into the object
     comando.setComandoSQL(query);
@@ -179,29 +179,31 @@ ResultadoEspecifico ServicoGestaoVocab::desenvolvedorDeVocab(const string& nomeV
     //execute the command to create the table
     try {
         comando.executar();
-        cout << voltas;
         voltas = comando.listaResultado.size();
 
                     for(i=0;i<voltas; i++){
-                        cout << comando.listaResultado.back().getNomeColuna() << " : " << comando.listaResultado.back().getValorColuna() << endl;
                         comando.listaResultado.pop_back();
                         }
 
-            if(comando.listaResultado.size() >> 5){
+            if(voltas >= 5){
                     resultado.setValor(ResultadoEspecifico::FALHA_2);
                     return resultado;
 
             }else{
-                query = "SELECT Nome FROM Vocabulario WHERE Nome = '" +nomeVocab+"';";
+                query = "SELECT Nome FROM Vocabulario WHERE Nome = '"+nomeVocab+"';";
                 comando.setComandoSQL(query);
                 comando.executar();
-                if(comando.listaResultado.size() == 0){
+                voltas = comando.listaResultado.size();
+                for(i=0;i<voltas; i++){
+                    comando.listaResultado.pop_back();
+                }
+                if(voltas == 0){
                     resultado.setValor(ResultadoEspecifico::FALHA);
                     return resultado;
                 }else{
-                    query = "INSERT INTO VocabDesenvolvedor VALUES('" +email+"', '" +nomeVocab+"');";
+                    query = "INSERT INTO VocabDesenvolvedor VALUES('"+nomeVocab+"', '"+email+"');";
                     comando.setComandoSQL(query);
-                    comando.executar();
+                    comando.executar();;
                     resultado.setValor(ResultadoEspecifico::SUCESSO);
                 }
             }
