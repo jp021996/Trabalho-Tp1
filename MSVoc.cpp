@@ -82,12 +82,49 @@ ResultadoTermo ServicoGestaoVocab::consultarTermo(const string& nomeTermo) throw
     //the object to be the result of the registering
     ResultadoTermo resultado;
 
+    //the object that make the SQL comand
+    ComandoSQL comando;
+
+    //create a query to show all the vocabs
+    string query;
+
+
+    query = "SELECT * FROM Termo WHERE Nome = '" +nomeTermo+"';";
+
+    //put the query into the object
+    comando.setComandoSQL(query);
+
+    //execute the command to create the table
+    try {
+        comando.executar();
+
+    query = "SELECT Definicao FROM TermoDef WHERE Termo= '" +nomeTermo+"';";
+    //put the query into the object
+    comando.setComandoSQL(query);
+    comando.executar();
+
+        if(comando.listaResultado.size()== 0){
+        resultado.setValor(ResultadoVocab::FALHA);
+
+        }else{
+            resultado.setValor(ResultadoVocab::SUCESSO);
+        }
+
+    }
+    catch (EErroPersistencia& e){
+        cerr << e.what();
+        resultado.setValor(ResultadoVocab::FALHA);
+        return resultado;
+    }
+
     return resultado;
 }
+
 
 ResultadoDefinicao ServicoGestaoVocab::consultarDefinicao(const string& textoDef) throw(runtime_error) {
     //the object to be the result of the registering
     ResultadoDefinicao resultado;
+
 
     return resultado;
 }

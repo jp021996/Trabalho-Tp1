@@ -95,7 +95,6 @@ Resultado ApresentacaoGestaoVocab::executarLeitor(const Email &email) throw(runt
                 if(resultadoVocab.getValor() == ResultadoVocab::SUCESSO){
 
                     voltas = comando.listaResultado.size();
-                    cout << voltas << endl;
 
                     cout << "Dados do Vocabulario: "<<endl;
                     //print on the scream the data of vocabs
@@ -135,16 +134,14 @@ Resultado ApresentacaoGestaoVocab::executarLeitor(const Email &email) throw(runt
                 if(resultadoTermo.getValor() == ResultadoTermo::SUCESSO){
                     resultado.setValor(Resultado::SUCESSO);
 
-                    int numeroDefinicoes = resultadoTermo.getDefinicoesTermo().size();
+                    voltas = comando.listaResultado.size();
 
                     cout << "Dados do Termo: "<<endl;
-                    cout << "> Nome: " << resultadoTermo.getTermo().getNome() << endl;
-                    cout << "> Data: " << resultadoTermo.getTermo().getData() << endl;
-                    cout << "> Vocabulario: " << resultadoTermo.getNomeVocabTermo() << endl;
-                    cout << "> Definicoes (" << numeroDefinicoes << "): "<<endl;
-                    for(int i=0; i<numeroDefinicoes; i++){
-                        cout << "    - '"<< resultadoTermo.getDefinicoesTermo()[i].getTexto()  << "'"<< endl;
-                    }
+                    //print on the scream the data of vocabs
+                    for(i=0;i<voltas; i++){
+                        cout << comando.listaResultado.back().getNomeColuna() << " : " << comando.listaResultado.back().getValorColuna() << endl;
+                        comando.listaResultado.pop_back();
+                        }
                     cout << endl;
                 }
                 if(resultadoTermo.getValor() == Resultado::FALHA){
