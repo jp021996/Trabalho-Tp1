@@ -54,23 +54,17 @@ Resultado ApresentacaoGestaoVocab::executarLeitor(const Email &email) throw(runt
 
 
         if (opcao == LISTAR_VOCABS){
-            int tam;
+
             ResultadoLista resultadoLista;
-            vector<string> listaVocab;
 
             resultadoLista = link_MA_MS_GestaoVocab->listarVocabs();
 
-            resultado.setValor(Resultado::SUCESSO);
-
-            listaVocab = resultadoLista.listaVocab;
-
-            tam = listaVocab.size();
-
-            cout << endl << "Foram encontrados " << tam << " vocabularios." << endl;
-
-            for(int i=0; i<tam; i++){
-                cout <<"> "<<listaVocab[i] << endl;
+            if(resultado.getValor() == ResultadoLista::FALHA){
+                cout << "Ocorreu uma falha no programa" << endl;
+            }else{
+                cout <<"O programa funcionou corretemante" << endl;
             }
+
             cout << endl;
             system("PAUSE");
 

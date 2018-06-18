@@ -4,6 +4,41 @@
 ResultadoLista ServicoGestaoVocab::listarVocabs() throw(runtime_error) {
     //the object to be the result of the registering
     ResultadoLista resultado;
+    //the object that make the SQL comand
+    ComandoSQL comando;
+    //counter and number of loops that for will make
+    int i, voltas;
+
+    //create a query to show all the vocabs
+    string query;
+
+
+    query = "SELECT Nome FROM Vocabulario";
+
+    //put the query into the object
+    comando.setComandoSQL(query);
+
+    //execute the command to create the table
+    try {
+    comando.executar();
+
+    voltas = comando.listaResultado.size();
+
+    cout << "O número de vocabulários é: " << voltas<< endl;
+        //print on the scream the vocabs
+        for(i=0;i<voltas; i++){
+            cout << comando.listaResultado.back().getNomeColuna() << " : " << comando.listaResultado.back().getValorColuna() << endl;
+            comando.listaResultado.pop_back();
+        }
+        resultado.setValor(ResultadoLista::SUCESSO);
+
+    }
+    catch (EErroPersistencia& e){
+        cerr << e.what();
+        resultado.setValor(Resultado::FALHA);
+        return resultado;
+    }
+
 
     return resultado;
 }
