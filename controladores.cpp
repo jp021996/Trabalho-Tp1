@@ -236,7 +236,6 @@ ResultadoInicializacao Controle::inicializar(){
     query = "CREATE TABLE IF NOT EXISTS Desenvolvedor (\
     Nome varchar(20), \
     SobreNome varchar(20), \
-    Data varchar(15), \
     Email varchar(30), \
     Senha varchar(8), \
     PRIMARY KEY(Email));";
@@ -259,7 +258,6 @@ ResultadoInicializacao Controle::inicializar(){
     Nome varchar(20), \
     SobreNome varchar(20), \
     Telefone varchar (15), \
-    Data varchar(15), \
     Endereco varchar (20), \
     Email varchar(30), \
     Senha varchar(8), \
@@ -277,7 +275,7 @@ ResultadoInicializacao Controle::inicializar(){
         resultadoInicializacao.setValor(Resultado::FALHA);
         return resultadoInicializacao;
     }
-        
+
     //create the table of the terms if it doesn't exist
     query = "CREATE TABLE IF NOT EXISTS Termo (\
     Nome varchar(20), \
