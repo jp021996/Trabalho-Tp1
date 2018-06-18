@@ -269,10 +269,54 @@ ResultadoVocab ServicoGestaoVocab::criarVocabulario(const Vocabulario& vocab, co
     ComandoSQL comando;
     //create a query to show all the vocabs
     string query;
+    //the length of the list
+    int tam;
+    //a regular counter
+    int counter;
+
+    //creating the query to get the id
+    query = "SELECT Id FROM Definicao;";
+
+    comando.setComandoSQL(query);
+
+    //execute the command to create the table
+    try {
+        comando.executar();
+    }
+    catch (EErroPersistencia& e){
+        cerr << e.what();
+        system("pause");
+        resultado.setValor(Resultado::FALHA);
+        return resultado;
+    }
+
+    tam = comando.listaResultado.size();
+
+    for(counter = 0; counter < tam; counter++){
+        comando.listaResultado.pop_back();
+    }
+
+    //creating the query to add the vocabulary
+    query = "INSERT INTO Definicao VALUES(" + to_string(tam+1) + ",'" +
+    defVocab.getData() + "','" + defVocab.getTexto() + "');";
+
+     //put the query into the object
+    comando.setComandoSQL(query);
+
+    //execute the command to create the table
+    try {
+        comando.executar();
+    }
+    catch (EErroPersistencia& e){
+        cerr << e.what();
+        system("pause");
+        resultado.setValor(Resultado::FALHA);
+        return resultado;
+    }
 
     //creating the query to add the vocabulary
     query = "INSERT INTO Vocabulario VALUES('" +
-    vocab.getNome() + "','" + defVocab.getTexto() +
+    vocab.getNome() + "','" + to_string(tam+1) +
     "','" + vocab.getData() + "','" + vocab.getIdioma() +
     "','" + str + "');";
 
@@ -298,6 +342,30 @@ ResultadoVocab ServicoGestaoVocab::criarVocabulario(const Vocabulario& vocab, co
 Resultado ServicoGestaoVocab::editarDefinicaoVocab(const Vocabulario& vocab, const Definicao& defVocab) throw(runtime_error) {
     //the object to be the result of the registering
     Resultado resultado;
+    //the object that make the SQL comand
+    ComandoSQL comando;
+    //create a query to show all the vocabs
+    string query;
+
+    //creating the query to update the definition text of the vocabulary
+    query = "INSERT INTO Vocabulario VALUES('" +
+    vocab.getNome() + "','" + defVocab.getTexto() +
+    "','" + vocab.getData() + "','" + vocab.getIdioma();
+//    "','" + str + "');";
+
+    //put the query into the object
+    comando.setComandoSQL(query);
+
+    //execute the command to create the table
+    try {
+        comando.executar();
+    }
+    catch (EErroPersistencia& e){
+        cerr << e.what();
+        system("pause");
+        resultado.setValor(Resultado::FALHA);
+        return resultado;
+    }
 
     return resultado;
 }

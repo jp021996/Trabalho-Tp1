@@ -301,7 +301,7 @@ ResultadoInicializacao Controle::inicializar(){
 
     //create the table of the definition if it doesn't exist
     query = "CREATE TABLE IF NOT EXISTS Definicao (\
-    Id int AUTO_INCREMENT, \
+    Id int, \
     Data date, \
     TextoDefinicao varchar(30), \
     PRIMARY KEY(Id));";
