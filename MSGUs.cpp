@@ -253,9 +253,141 @@ ResultadoCadastro ServicoGestao::cadastrarAdministrador(const Administrador& adm
 Resultado ServicoGestao::remover(const Email& email) throw(runtime_error){
     //the object to be the result if the remove was a success or a failure
     Resultado resultado;
+    //the object to access the database
+    ComandoSQL comando;
+    //the query to set the informations
+    string query;
+    //the email of the user
+    string emailDatabase;
 
+    //get the email from the database of reader
+    query = "SELECT Email FROM Leitor WHERE Email = '" + email.getEmail() + "';";
 
-    return resultado;
+    //put the query into the object
+    comando.setComandoSQL(query);
+
+    //execute the command to get the email
+    try {
+        comando.executar();
+    }
+    catch (EErroPersistencia& e){
+        cerr << e.what();
+        system("pause");
+        resultado.setValor(Resultado::FALHA);
+        return resultado;
+    }
+
+    //get the email from the database
+    emailDatabase = comando.listaResultado.back().getValorColuna();
+    comando.listaResultado.pop_back();
+
+    //check if this email exists on the reader table
+    if(emailDatabase != ""){
+        //do the query to delete the user
+        query = "DELETE FROM Leitor WHERE Email = '" + emailDatabase + "';";
+
+        //put the query into the object
+        comando.setComandoSQL(query);
+
+        //execute the command to delete the user
+        try {
+            comando.executar();
+            resultado.setValor(Resultado::SUCESSO);
+            return resultado;
+        }
+        catch (EErroPersistencia& e){
+            cerr << e.what();
+            system("pause");
+            resultado.setValor(Resultado::FALHA);
+            return resultado;
+        }
+    }
+
+    //get the email from the database of developer
+    query = "SELECT Email FROM Desenvolvedor WHERE Email = '" + email.getEmail() + "';";
+
+    //put the query into the object
+    comando.setComandoSQL(query);
+
+    //execute the command to get the email
+    try {
+        comando.executar();
+    }
+    catch (EErroPersistencia& e){
+        cerr << e.what();
+        system("pause");
+        resultado.setValor(Resultado::FALHA);
+        return resultado;
+    }
+
+    //get the email from the database
+    emailDatabase = comando.listaResultado.back().getValorColuna();
+    comando.listaResultado.pop_back();
+
+    //check if this email exists on the developer table
+    if(emailDatabase != ""){
+        //do the query to delete the user
+        query = "DELETE FROM Desenvolvedor WHERE Email = '" + emailDatabase + "';";
+
+        //put the query into the object
+        comando.setComandoSQL(query);
+
+        //execute the command to delete the user
+        try {
+            comando.executar();
+            resultado.setValor(Resultado::SUCESSO);
+            return resultado;
+        }
+        catch (EErroPersistencia& e){
+            cerr << e.what();
+            system("pause");
+            resultado.setValor(Resultado::FALHA);
+            return resultado;
+        }
+    }
+
+       //get the email from the database of administer
+    query = "SELECT Email FROM Admministrador WHERE Email = '" + email.getEmail() + "';";
+
+    //put the query into the object
+    comando.setComandoSQL(query);
+
+    //execute the command to get the email
+    try {
+        comando.executar();
+    }
+    catch (EErroPersistencia& e){
+        cerr << e.what();
+        system("pause");
+        resultado.setValor(Resultado::FALHA);
+        return resultado;
+    }
+
+    //get the email from the database
+    emailDatabase = comando.listaResultado.back().getValorColuna();
+    comando.listaResultado.pop_back();
+
+    //check if this email exists on the administer table
+    if(emailDatabase != ""){
+        //do the query to delete the user
+        query = "DELETE FROM Administrador WHERE Email = '" + emailDatabase + "';";
+
+        //put the query into the object
+        comando.setComandoSQL(query);
+
+        //execute the command to delete the user
+        try {
+            comando.executar();
+            resultado.setValor(Resultado::SUCESSO);
+            return resultado;
+        }
+        catch (EErroPersistencia& e){
+            cerr << e.what();
+            system("pause");
+            resultado.setValor(Resultado::FALHA);
+            return resultado;
+        }
+    }
 }
 
 //definition of the method to edit the reader

@@ -11,7 +11,7 @@ ResultadoLista ServicoGestaoVocab::listarVocabs() throw(runtime_error) {
     string query;
 
 
-    query = "SELECT Nome FROM Vocabulario";
+    query = "SELECT Nome FROM Vocabulario;";
 
     //put the query into the object
     comando.setComandoSQL(query);
@@ -22,6 +22,7 @@ ResultadoLista ServicoGestaoVocab::listarVocabs() throw(runtime_error) {
 
         if(comando.listaResultado.size()== 0){
             resultado.setValor(ResultadoVocab::FALHA);
+            return resultado;
         }else{
             resultado.setValor(ResultadoLista::SUCESSO);
             return resultado;
