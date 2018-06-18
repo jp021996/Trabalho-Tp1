@@ -224,8 +224,10 @@ Resultado ApresentacaoGestaoVocab::executarLeitor(const Email &email) throw(runt
 
 Resultado ApresentacaoGestaoVocab::executarDesenvolvedor(const Email &email) throw(runtime_error){
 
-    int opcao;
+    int opcao, voltas, i;
     Resultado resultado;
+    ComandoSQL comando;
+    Nome nome;
 
     const int LISTAR_VOCABS = 1;
     const int MOSTRAR_DADOS = 2;
@@ -264,23 +266,26 @@ Resultado ApresentacaoGestaoVocab::executarDesenvolvedor(const Email &email) thr
 
 
         if (opcao == LISTAR_VOCABS){
-            int tam;
+
             ResultadoLista resultadoLista;
-            vector<string> listaVocab;
 
             resultadoLista = link_MA_MS_GestaoVocab->listarVocabs();
 
-            resultado.setValor(Resultado::SUCESSO);
+            if(resultadoLista.getValor() == ResultadoLista::FALHA){
+                cout << "Não há vocabulários ou ocorreu uma falha" << endl;
+                cout << comando.listaResultado.size();
+            }else{
+                voltas = comando.listaResultado.size();
 
-            listaVocab = resultadoLista.listaVocab;
+                cout << "O número de vocabulários é: " << voltas<< endl;
 
-            tam = listaVocab.size();
-
-            cout << endl << "Foram encontrados " << tam << " vocabularios." << endl;
-
-            for(int i=0; i<tam; i++){
-                cout <<"> "<<listaVocab[i] << endl;
+                 //print on the scream the name of vocabs
+                for(i=0;i<voltas; i++){
+                    cout << comando.listaResultado.back().getNomeColuna() << " : " << comando.listaResultado.back().getValorColuna() << endl;
+                    comando.listaResultado.pop_back();
+                }
             }
+
             cout << endl;
             system("PAUSE");
 
@@ -295,28 +300,20 @@ Resultado ApresentacaoGestaoVocab::executarDesenvolvedor(const Email &email) thr
             cout << endl;
 
             try{
-
+                nome.setNome(nomeVocab);
                 resultadoVocab = link_MA_MS_GestaoVocab->dadosVocab(nomeVocab);
 
                 if(resultadoVocab.getValor() == ResultadoVocab::SUCESSO){
-                    resultado.setValor(Resultado::SUCESSO);
 
-                    int numeroTermos = resultadoVocab.getNomesTermosVocab().size();
-                    int numeroDesenv = resultadoVocab.getNomesDesenvolvedores().size();
+                    voltas = comando.listaResultado.size();
 
                     cout << "Dados do Vocabulario: "<<endl;
-                    cout << "> Nome: " << resultadoVocab.getVocab().getNome() << endl;
-                    cout << "> Idioma: " << resultadoVocab.getVocab().getIdioma() << endl;
-                    cout << "> Data: " << resultadoVocab.getVocab().getData() << endl;
-                    cout << "> Administrador: " << resultadoVocab.getNomeAdm() << endl;
-                    cout << "> Desenvolvedores (" << numeroDesenv << "): "<<endl;
-                    for(int i=0; i<numeroDesenv; i++){
-                        cout << "    - "<< resultadoVocab.getNomesDesenvolvedores()[i] << endl;
-                    }
-                    cout << "> Termos (" << numeroTermos << "): "<<endl;
-                    for(int i=0; i<numeroTermos; i++){
-                        cout << "    - "<< resultadoVocab.getNomesTermosVocab()[i]  << endl;
-                    }
+                    //print on the scream the data of vocabs
+                    for(i=0;i<voltas; i++){
+                        cout << comando.listaResultado.back().getNomeColuna() << " : " << comando.listaResultado.back().getValorColuna() << endl;
+                        comando.listaResultado.pop_back();
+                        }
+
                     cout << endl;
                 }
                 if(resultadoVocab.getValor() == ResultadoVocab::FALHA){
@@ -343,21 +340,20 @@ Resultado ApresentacaoGestaoVocab::executarDesenvolvedor(const Email &email) thr
             cin >> nomeTermo;
 
             try{
+                nome.setNome(nomeTermo);
                 resultadoTermo = link_MA_MS_GestaoVocab->consultarTermo(nomeTermo);
 
                 if(resultadoTermo.getValor() == ResultadoTermo::SUCESSO){
                     resultado.setValor(Resultado::SUCESSO);
 
-                    int numeroDefinicoes = resultadoTermo.getDefinicoesTermo().size();
+                    voltas = comando.listaResultado.size();
 
                     cout << "Dados do Termo: "<<endl;
-                    cout << "> Nome: " << resultadoTermo.getTermo().getNome() << endl;
-                    cout << "> Data: " << resultadoTermo.getTermo().getData() << endl;
-                    cout << "> Vocabulario: " << resultadoTermo.getNomeVocabTermo() << endl;
-                    cout << "> Definicoes (" << numeroDefinicoes << "): "<<endl;
-                    for(int i=0; i<numeroDefinicoes; i++){
-                        cout << "    - '"<< resultadoTermo.getDefinicoesTermo()[i].getTexto()  << "'"<< endl;
-                    }
+                    //print on the scream the data of vocabs
+                    for(i=0;i<voltas; i++){
+                        cout << comando.listaResultado.back().getNomeColuna() << " : " << comando.listaResultado.back().getValorColuna() << endl;
+                        comando.listaResultado.pop_back();
+                        }
                     cout << endl;
                 }
                 if(resultadoTermo.getValor() == Resultado::FALHA){
@@ -379,29 +375,26 @@ Resultado ApresentacaoGestaoVocab::executarDesenvolvedor(const Email &email) thr
         if(opcao == CONSULTAR_DEFINICAO){
 
             ResultadoDefinicao resultadoDefinicao;
-            string textoDef;
+            string termo;
 
             fflush(stdin);
-            cout << "Digite um trecho do texto a ser pesquisado: ";
-            getline(cin,textoDef);
-            fflush(stdin);
+            cout << "Digite o termo o qual deseja saber a definição: ";
+            getline(cin,termo);
+            //fflush(stdin);
 
             try{
-                resultadoDefinicao = link_MA_MS_GestaoVocab->consultarDefinicao(textoDef);
+                nome.setNome(termo);
+                resultadoDefinicao = link_MA_MS_GestaoVocab->consultarDefinicao(termo);
 
                 if(resultadoDefinicao.getValor() == Resultado::SUCESSO){
                     resultado.setValor(Resultado::SUCESSO);
 
-                    int numeroTermosDef = resultadoDefinicao.getTermosDef().size();
+                    //print on the scream the data of definitions
+                    for(i=0;i<voltas; i++){
+                        cout << comando.listaResultado.back().getNomeColuna() << " : " << comando.listaResultado.back().getValorColuna() << endl;
+                        comando.listaResultado.pop_back();
+                        }
 
-                    cout << "> Texto da definicao: '"<< resultadoDefinicao.getDefinicao().getTexto() <<"'"<<endl;
-                    cout << "> Data da definicao: " << resultadoDefinicao.getDefinicao().getData() << endl;
-                    cout << "> Numero de termos associados (" << numeroTermosDef << "): "  << endl;
-                    for(int i=0; i<numeroTermosDef; i++){
-                        cout << "     "<<i+1<<") "<< resultadoDefinicao.getTermosDef()[i].getNome();
-                        cout << "[Data: " << resultadoDefinicao.getTermosDef()[i].getData() <<"] ";
-                        cout << "[Preferencia: " << resultadoDefinicao.getTermosDef()[i].getPreferencia()<<"]"<<endl;
-                    }
                     cout << endl;
                 }
                 if(resultadoDefinicao.getValor() == ResultadoDefinicao::FALHA){
@@ -416,6 +409,9 @@ Resultado ApresentacaoGestaoVocab::executarDesenvolvedor(const Email &email) thr
                 cerr << endl << excecao.what() <<endl;
                 return resultado;
             }
+
+
+
 
         }
 
@@ -760,8 +756,10 @@ Resultado ApresentacaoGestaoVocab::executarDesenvolvedor(const Email &email) thr
 
 Resultado ApresentacaoGestaoVocab::executarAdministrador(const Email &email) throw(runtime_error){
 
-    int opcao;
+    int opcao, voltas, i;
     Resultado resultado;
+    ComandoSQL comando;
+    Nome nome;
 
     const int LISTAR_VOCABS = 1;
     const int MOSTRAR_DADOS = 2;
@@ -807,23 +805,26 @@ Resultado ApresentacaoGestaoVocab::executarAdministrador(const Email &email) thr
 
 
         if (opcao == LISTAR_VOCABS){
-            int tam;
+
             ResultadoLista resultadoLista;
-            vector<string> listaVocab;
 
             resultadoLista = link_MA_MS_GestaoVocab->listarVocabs();
 
-            resultado.setValor(Resultado::SUCESSO);
+            if(resultadoLista.getValor() == ResultadoLista::FALHA){
+                cout << "Não há vocabulários ou ocorreu uma falha" << endl;
+                cout << comando.listaResultado.size();
+            }else{
+                voltas = comando.listaResultado.size();
 
-            listaVocab = resultadoLista.listaVocab;
+                cout << "O número de vocabulários é: " << voltas<< endl;
 
-            tam = listaVocab.size();
-
-            cout << endl << "Foram encontrados " << tam << " vocabularios." << endl;
-
-            for(int i=0; i<tam; i++){
-                cout <<"> "<<listaVocab[i] << endl;
+                 //print on the scream the name of vocabs
+                for(i=0;i<voltas; i++){
+                    cout << comando.listaResultado.back().getNomeColuna() << " : " << comando.listaResultado.back().getValorColuna() << endl;
+                    comando.listaResultado.pop_back();
+                }
             }
+
             cout << endl;
             system("PAUSE");
 
@@ -838,28 +839,20 @@ Resultado ApresentacaoGestaoVocab::executarAdministrador(const Email &email) thr
             cout << endl;
 
             try{
-
+                nome.setNome(nomeVocab);
                 resultadoVocab = link_MA_MS_GestaoVocab->dadosVocab(nomeVocab);
 
                 if(resultadoVocab.getValor() == ResultadoVocab::SUCESSO){
-                    resultado.setValor(Resultado::SUCESSO);
 
-                    int numeroTermos = resultadoVocab.getNomesTermosVocab().size();
-                    int numeroDesenv = resultadoVocab.getNomesDesenvolvedores().size();
+                    voltas = comando.listaResultado.size();
 
                     cout << "Dados do Vocabulario: "<<endl;
-                    cout << "> Nome: " << resultadoVocab.getVocab().getNome() << endl;
-                    cout << "> Idioma: " << resultadoVocab.getVocab().getIdioma() << endl;
-                    cout << "> Data: " << resultadoVocab.getVocab().getData() << endl;
-                    cout << "> Administrador: " << resultadoVocab.getNomeAdm() << endl;
-                    cout << "> Desenvolvedores (" << numeroDesenv << "): "<<endl;
-                    for(int i=0; i<numeroDesenv; i++){
-                        cout << "    - "<< resultadoVocab.getNomesDesenvolvedores()[i] << endl;
-                    }
-                    cout << "> Termos (" << numeroTermos << "): "<<endl;
-                    for(int i=0; i<numeroTermos; i++){
-                        cout << "    - "<< resultadoVocab.getNomesTermosVocab()[i]  << endl;
-                    }
+                    //print on the scream the data of vocabs
+                    for(i=0;i<voltas; i++){
+                        cout << comando.listaResultado.back().getNomeColuna() << " : " << comando.listaResultado.back().getValorColuna() << endl;
+                        comando.listaResultado.pop_back();
+                        }
+
                     cout << endl;
                 }
                 if(resultadoVocab.getValor() == ResultadoVocab::FALHA){
@@ -886,21 +879,20 @@ Resultado ApresentacaoGestaoVocab::executarAdministrador(const Email &email) thr
             cin >> nomeTermo;
 
             try{
+                nome.setNome(nomeTermo);
                 resultadoTermo = link_MA_MS_GestaoVocab->consultarTermo(nomeTermo);
 
                 if(resultadoTermo.getValor() == ResultadoTermo::SUCESSO){
                     resultado.setValor(Resultado::SUCESSO);
 
-                    int numeroDefinicoes = resultadoTermo.getDefinicoesTermo().size();
+                    voltas = comando.listaResultado.size();
 
                     cout << "Dados do Termo: "<<endl;
-                    cout << "> Nome: " << resultadoTermo.getTermo().getNome() << endl;
-                    cout << "> Data: " << resultadoTermo.getTermo().getData() << endl;
-                    cout << "> Vocabulario: " << resultadoTermo.getNomeVocabTermo() << endl;
-                    cout << "> Definicoes (" << numeroDefinicoes << "): "<<endl;
-                    for(int i=0; i<numeroDefinicoes; i++){
-                        cout << "    - '"<< resultadoTermo.getDefinicoesTermo()[i].getTexto()  << "'"<< endl;
-                    }
+                    //print on the scream the data of vocabs
+                    for(i=0;i<voltas; i++){
+                        cout << comando.listaResultado.back().getNomeColuna() << " : " << comando.listaResultado.back().getValorColuna() << endl;
+                        comando.listaResultado.pop_back();
+                        }
                     cout << endl;
                 }
                 if(resultadoTermo.getValor() == Resultado::FALHA){
@@ -922,29 +914,26 @@ Resultado ApresentacaoGestaoVocab::executarAdministrador(const Email &email) thr
         if(opcao == CONSULTAR_DEFINICAO){
 
             ResultadoDefinicao resultadoDefinicao;
-            string textoDef;
+            string termo;
 
             fflush(stdin);
-            cout << "Digite um trecho do texto a ser pesquisado: ";
-            getline(cin,textoDef);
-            fflush(stdin);
+            cout << "Digite o termo o qual deseja saber a definição: ";
+            getline(cin,termo);
+            //fflush(stdin);
 
             try{
-                resultadoDefinicao = link_MA_MS_GestaoVocab->consultarDefinicao(textoDef);
+                nome.setNome(termo);
+                resultadoDefinicao = link_MA_MS_GestaoVocab->consultarDefinicao(termo);
 
                 if(resultadoDefinicao.getValor() == Resultado::SUCESSO){
                     resultado.setValor(Resultado::SUCESSO);
 
-                    int numeroTermosDef = resultadoDefinicao.getTermosDef().size();
+                    //print on the scream the data of definitions
+                    for(i=0;i<voltas; i++){
+                        cout << comando.listaResultado.back().getNomeColuna() << " : " << comando.listaResultado.back().getValorColuna() << endl;
+                        comando.listaResultado.pop_back();
+                        }
 
-                    cout << "> Texto da definicao: '"<< resultadoDefinicao.getDefinicao().getTexto() <<"'"<<endl;
-                    cout << "> Data da definicao: " << resultadoDefinicao.getDefinicao().getData() << endl;
-                    cout << "> Numero de termos associados (" << numeroTermosDef << "): "  << endl;
-                    for(int i=0; i<numeroTermosDef; i++){
-                        cout << "     "<<i+1<<") "<< resultadoDefinicao.getTermosDef()[i].getNome();
-                        cout << "[Data: " << resultadoDefinicao.getTermosDef()[i].getData() <<"] ";
-                        cout << "[Preferencia: " << resultadoDefinicao.getTermosDef()[i].getPreferencia()<<"]"<<endl;
-                    }
                     cout << endl;
                 }
                 if(resultadoDefinicao.getValor() == ResultadoDefinicao::FALHA){
@@ -959,6 +948,9 @@ Resultado ApresentacaoGestaoVocab::executarAdministrador(const Email &email) thr
                 cerr << endl << excecao.what() <<endl;
                 return resultado;
             }
+
+
+
 
         }
 
