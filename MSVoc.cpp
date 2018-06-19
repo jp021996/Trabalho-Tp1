@@ -219,8 +219,14 @@ ResultadoEspecifico ServicoGestaoVocab::desenvolvedorDeVocab(const string& nomeV
     return resultado;
 }
 
+<<<<<<< HEAD
 ResultadoVocab ServicoGestaoVocab::criarTermo(const Termo& novoTermo, const string& nomeVocab, const string& email) throw(runtime_error) {
 
+=======
+
+
+ResultadoVocab ServicoGestaoVocab::criarTermo(const Termo& novoTermo, const string& nomeVocab, const string& email) throw(runtime_error) {
+>>>>>>> 26ddfa8b55e1ac959a5aede8b15415e8b22cb6c7
     //the object to be the result of the registering
     ResultadoVocab resultado;
 
@@ -464,6 +470,59 @@ Resultado ServicoGestaoVocab::editarDefinicaoVocab(const Vocabulario& vocab, con
 Resultado ServicoGestaoVocab::editarIdiomaVocab(const Vocabulario& vocab, const Idioma& idioma) throw(runtime_error) {
     //the object to be the result of the registering
     Resultado resultado;
+    //the object that make the SQL command
+    ComandoSQL comando;
+    //create a query to show all the vocabs
+    string query;
+    //name of database
+    string nomeDatabase = "";
+
+    query = "SELECT Nome \
+    FROM Vocabulario \
+    WHERE Nome = '" + vocab.getNome() + "';";
+
+    //put the query into the object
+    comando.setComandoSQL(query);
+
+    //execute the command to create the table
+    try {
+        comando.executar();
+    }
+    catch (EErroPersistencia& e){
+        cerr << e.what();
+        system("pause");
+        resultado.setValor(Resultado::FALHA);
+        return resultado;
+    }
+
+    nomeDatabase = comando.listaResultado.back().getValorColuna();
+
+    if(nomeDatabase == ""){
+        resultado.setValor(Resultado::FALHA);
+        return resultado;
+    }
+
+    comando.listaResultado.pop_back();
+
+    //creating the query to update the definition text of the vocabulary
+    query = "UPDATE Vocabulario SET Idioma = '" + idioma.getIdioma() + "' WHERE Nome = '" +
+    vocab.getNome() + "';";
+
+    //put the query into the object
+    comando.setComandoSQL(query);
+
+    //execute the command to create the table
+    try {
+        comando.executar();
+    }
+    catch (EErroPersistencia& e){
+        cerr << e.what();
+        system("pause");
+        resultado.setValor(Resultado::FALHA);
+        return resultado;
+    }
+
+    resultado.setValor(Resultado::SUCESSO);
 
     return resultado;
 }
