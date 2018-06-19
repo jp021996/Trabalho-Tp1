@@ -628,7 +628,7 @@ Resultado ApresentacaoGestaoVocab::executarDesenvolvedor(const Email &email) thr
                     cout << "Digite o texto da definição que deseja excluir: ";
                     getline(cin,textoDef);
                     fflush(stdin);
-                    definicao.setTexto(textoDef);
+                    nome.setNome(textoDef);
 
                     correto = true;
                     break;
@@ -644,7 +644,7 @@ Resultado ApresentacaoGestaoVocab::executarDesenvolvedor(const Email &email) thr
             if(correto==true){
 
                 try{
-                    resultadoDefinicao = link_MA_MS_GestaoVocab->excluirDefinicao(definicao);
+                    resultadoDefinicao = link_MA_MS_GestaoVocab->excluirDefinicao(nome);
 
                     if(resultadoDefinicao.getValor() == ResultadoDefinicao::SUCESSO){
                         resultado.setValor(Resultado::SUCESSO);
@@ -1194,10 +1194,10 @@ Resultado ApresentacaoGestaoVocab::executarAdministrador(const Email &email) thr
 
                 try{
                     fflush(stdin);
-                    cout << "Digite o texto da definição que deseja excluir: ";
+                    cout << "Digite o termo o qual deseja excluir as definições: ";
                     getline(cin,textoDef);
                     fflush(stdin);
-                    definicao.setTexto(textoDef);
+                    nome.setNome(textoDef);
 
                     correto = true;
                     break;
@@ -1213,7 +1213,7 @@ Resultado ApresentacaoGestaoVocab::executarAdministrador(const Email &email) thr
             if(correto==true){
 
                 try{
-                    resultadoDefinicao = link_MA_MS_GestaoVocab->excluirDefinicao(definicao);
+                    resultadoDefinicao = link_MA_MS_GestaoVocab->excluirDefinicao(nome);
 
                     if(resultadoDefinicao.getValor() == ResultadoDefinicao::SUCESSO){
                         resultado.setValor(Resultado::SUCESSO);

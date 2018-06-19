@@ -124,7 +124,7 @@ public:
     virtual ResultadoTermo excluirTermo(const Termo&) throw(runtime_error)= 0; //SUCESSO: ok,    FALHA: nao existe
     virtual ResultadoDefinicao criarDefinicao(const Definicao&) throw(runtime_error)= 0; //SUCESSO: ok   //FALHA: termo nao existe OU termo com mais de 5
     virtual ResultadoDefinicao editarDefinicao(const Definicao&,const Definicao&) throw(runtime_error)= 0; //SUCESSO: ok,    FALHA: nao existe
-    virtual Resultado excluirDefinicao(const Definicao&) throw(runtime_error)= 0; //SUCESSO: ok,    FALHA: nao existe
+    virtual Resultado excluirDefinicao(const Nome&) throw(runtime_error)= 0; //SUCESSO: ok,    FALHA: nao existe
     //
     virtual ResultadoVocab criarVocabulario(const Vocabulario&, const Definicao&, const string&) throw(runtime_error)= 0; // SUCESSO: ok,    FALHA: ja criou 5
     virtual Resultado editarDefinicaoVocab(const Vocabulario&, const Definicao&) throw(runtime_error)= 0;  //SUCESSO: ok,    FALHA: nao existe

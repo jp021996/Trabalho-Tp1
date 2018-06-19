@@ -375,9 +375,34 @@ ResultadoDefinicao ServicoGestaoVocab::editarDefinicao(const Definicao& antigaDe
     return resultado;
 }
 
-Resultado ServicoGestaoVocab::excluirDefinicao(const Definicao& definicao) throw(runtime_error) {
+Resultado ServicoGestaoVocab::excluirDefinicao(const Nome& nome) throw(runtime_error) {
     //the object to be the result of the registering
     Resultado resultado;
+
+    //the object that make the SQL comand
+    ComandoSQL comando;
+
+    //create a query to show all the vocabs
+    string query;
+
+
+    query = "SELECT Definicao FROM TermoDef WHERE Termo = '" +nome.getNome()+"';";
+
+    //put the query into the object
+    comando.setComandoSQL(query);
+
+    //execute the command to create the table
+    try {
+        comando.executar();
+        if(comando.listaResultado.back().getValorColuna() == ""){}
+
+            resultado.setValor(ResultadoTermo::SUCESSO);
+    }
+    catch (EErroPersistencia& e){
+        cerr << e.what();
+        resultado.setValor(ResultadoTermo::FALHA);
+        return resultado;
+    }
 
     return resultado;
 }
@@ -580,6 +605,27 @@ Resultado ServicoGestaoVocab::editarIdiomaVocab(const Vocabulario& vocab, const 
 Resultado ServicoGestaoVocab::excluirVocabulario(const Vocabulario& vocab) throw(runtime_error) {
     //the object to be the result of the registering
     Resultado resultado;
+
+     //the object that make the SQL command
+    ComandoSQL comando;
+    //create a query to show all the vocabs
+    string query;
+
+    query = "DELETE FROM Vocabulario WHERE Nome = '" + vocab.getNome() + "';";
+
+    //put the query into the object
+    comando.setComandoSQL(query);
+
+    //execute the command to create the table
+    try {
+        comando.executar();
+    }
+    catch (EErroPersistencia& e){
+        cerr << e.what();
+        system("pause");
+        resultado.setValor(Resultado::FALHA);
+        return resultado;
+    }
 
     return resultado;
 }
