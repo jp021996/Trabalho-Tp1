@@ -364,6 +364,59 @@ ResultadoTermo ServicoGestaoVocab::excluirTermo(const Termo& termo) throw(runtim
 ResultadoDefinicao ServicoGestaoVocab::criarDefinicao(const Definicao& definicao) throw(runtime_error) {
     //the object to be the result of the registering
     ResultadoDefinicao resultado;
+        //the object that make the SQL comand
+    ComandoSQL comando;
+    //create a query to show all the vocabs
+    string query;
+    //the length of the list
+    int tam;
+    //a regular counter
+    int counter;
+
+    //creating the query to get the id
+    query = "SELECT Id FROM Definicao;";
+
+    comando.setComandoSQL(query);
+
+    //execute the command to create the table
+    try {
+        comando.executar();
+    }
+    catch (EErroPersistencia& e){
+        cerr << e.what();
+        system("pause");
+        resultado.setValor(Resultado::FALHA);
+        return resultado;
+    }
+
+    tam = comando.listaResultado.size();
+
+    if(tam != 0){
+        for(counter = 0; counter < tam; counter++){
+            cout << comando.listaResultado.back().getValorColuna() << endl;
+            comando.listaResultado.pop_back();
+        }
+    }
+
+    //creating the query to add the vocabulary
+    query = "INSERT INTO Definicao VALUES(" + to_string(tam+1) + ",'" +
+    definicao.getData() + "','" + definicao.getTexto() + "');";
+
+     //put the query into the object
+    comando.setComandoSQL(query);
+
+    //execute the command to create the table
+    try {
+        comando.executar();
+    }
+    catch (EErroPersistencia& e){
+        cerr << e.what();
+        system("pause");
+        resultado.setValor(Resultado::FALHA);
+        return resultado;
+    }
+
+    resultado.setValor(Resultado::SUCESSO);
 
     return resultado;
 }
