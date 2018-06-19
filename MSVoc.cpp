@@ -425,6 +425,37 @@ ResultadoDefinicao ServicoGestaoVocab::editarDefinicao(const Definicao& antigaDe
     //the object to be the result of the registering
     ResultadoDefinicao resultado;
 
+    //the object that make the SQL comand
+    ComandoSQL comando;
+
+    //create a query to show all the vocabs
+    string query;
+
+    query = "SELECT Id FROM Definicao WHERE Id = '"+antigaDef.getTexto()+"';";
+
+    //put the query into the object
+    comando.setComandoSQL(query);
+
+    //execute the command to create the table
+    try {
+        comando.executar();
+        if(comando.listaResultado.size() == 0){
+            resultado.setValor(ResultadoDefinicao::FALHA);
+        }else{
+
+        comando.listaResultado.pop_back();
+         query = "UPDATE Definicao SET TextoDefinicao = '"+novaDef.getTexto()+"', Data = '"+novaDef.getData()+"'  WHERE Id = '" +antigaDef.getTexto()+"';";
+         comando.setComandoSQL(query);
+
+            resultado.setValor(ResultadoTermo::SUCESSO);
+        }
+    }
+    catch (EErroPersistencia& e){
+        cerr << e.what();
+        resultado.setValor(ResultadoTermo::FALHA);
+        return resultado;
+    }
+
     return resultado;
 }
 

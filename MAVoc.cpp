@@ -707,6 +707,7 @@ Resultado ApresentacaoGestaoVocab::executarDesenvolvedor(const Email &email) thr
         if(opcao == EDITAR_DEF_TERMO){
 
             ResultadoDefinicao resultadoDefinicao;
+            int id;
             Definicao antigaDefinicao;
             Definicao novaDefinicao;
             string antigoTextoDef;
@@ -718,7 +719,7 @@ Resultado ApresentacaoGestaoVocab::executarDesenvolvedor(const Email &email) thr
 
                 try{
                     fflush(stdin);
-                    cout << "Digite o atual texto da definição que deseja editar: ";
+                    cout << "Digite o id da definição que deseja editar: ";
                     getline(cin,antigoTextoDef);
                     fflush(stdin);
                     cout << "Digite o novo texto da definição que deseja editar: ";
@@ -750,8 +751,8 @@ Resultado ApresentacaoGestaoVocab::executarDesenvolvedor(const Email &email) thr
                         resultado.setValor(Resultado::SUCESSO);
                         cout << "A definição foi alterada com sucesso."<<endl;
                         cout << "Novos dados: "<<endl;
-                        cout << " > Texto: "<< resultadoDefinicao.getDefinicao().getTexto() <<endl;
-                        cout << " > Data: "<< resultadoDefinicao.getDefinicao().getData() <<endl;
+                        cout << " > Texto: "<< novaDefinicao.getTexto() <<endl;
+                        cout << " > Data: "<< novaDefinicao.getData() <<endl;
                     }
                     if(resultadoDefinicao.getValor() == ResultadoDefinicao::FALHA){
                         resultado.setValor(Resultado::FALHA);
