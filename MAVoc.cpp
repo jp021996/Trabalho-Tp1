@@ -613,6 +613,46 @@ Resultado ApresentacaoGestaoVocab::executarDesenvolvedor(const Email &email) thr
 
         if(opcao == CRIAR_DEF_TERMO){
 
+                ResultadoDefinicao resultadoDefinicao;
+            Definicao definicao;
+            string textoDef;
+            string dataDef;
+
+            while(true){
+                fflush(stdin);
+                cout << "Digite o texto da nova definição: ";
+                getline(cin,textoDef);
+                fflush(stdin);
+                cout << "Digite a data da definição: ";
+                cin >> dataDef;
+
+                try{
+                    definicao.setTexto(textoDef);
+                    definicao.setData(dataDef);
+                    break;
+                }catch(invalid_argument exp){
+                    cerr << exp.what() << endl;
+                    continue;
+                }
+            }
+
+            try{
+
+                resultadoDefinicao = link_MA_MS_GestaoVocab->criarDefinicao(definicao);
+
+                if(resultadoDefinicao.getValor() == ResultadoDefinicao::SUCESSO){
+                    resultado.setValor(Resultado::SUCESSO);
+                    cout << "A nova definição foi criada com sucesso."<<endl<<endl;
+
+                }
+                system("PAUSE");
+            }
+            catch (runtime_error exp){
+                resultado.setValor(Resultado::FALHA);
+                cerr << endl << exp.what() <<endl;
+                return resultado;
+            }
+
         }
         if(opcao == EXCLUIR_DEF_TERMO){
 
