@@ -657,26 +657,5 @@ Resultado ServicoGestaoVocab::excluirVocabulario(const Vocabulario& vocab) throw
 
     resultado.setValor(Resultado::SUCESSO);
 
-     //the object that make the SQL command
-    ComandoSQL comando;
-    //create a query to show all the vocabs
-    string query;
-
-    query = "DELETE FROM Vocabulario WHERE Nome = '" + vocab.getNome() + "';";
-
-    //put the query into the object
-    comando.setComandoSQL(query);
-
-    //execute the command to create the table
-    try {
-        comando.executar();
-    }
-    catch (EErroPersistencia& e){
-        cerr << e.what();
-        system("pause");
-        resultado.setValor(Resultado::FALHA);
-        return resultado;
-    }
-
     return resultado;
 }
