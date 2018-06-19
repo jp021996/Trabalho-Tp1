@@ -219,14 +219,9 @@ ResultadoEspecifico ServicoGestaoVocab::desenvolvedorDeVocab(const string& nomeV
     return resultado;
 }
 
-<<<<<<< HEAD
-ResultadoVocab ServicoGestaoVocab::criarTermo(const Termo& novoTermo, const string& nomeVocab, const string& email) throw(runtime_error) {
-
-=======
-
 
 ResultadoVocab ServicoGestaoVocab::criarTermo(const Termo& novoTermo, const string& nomeVocab, const string& email) throw(runtime_error) {
->>>>>>> 26ddfa8b55e1ac959a5aede8b15415e8b22cb6c7
+
     //the object to be the result of the registering
     ResultadoVocab resultado;
 
