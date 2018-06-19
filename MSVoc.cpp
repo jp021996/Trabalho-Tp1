@@ -386,7 +386,7 @@ Resultado ServicoGestaoVocab::excluirDefinicao(const Nome& nome) throw(runtime_e
     string query;
 
 
-    query = "SELECT Definicao FROM TermoDef WHERE Termo = '" +nome.getNome()+"';";
+    query = "SELECT Nome FROM Termo WHERE Nome = '" +nome.getNome()+"';";
 
     //put the query into the object
     comando.setComandoSQL(query);
@@ -394,7 +394,17 @@ Resultado ServicoGestaoVocab::excluirDefinicao(const Nome& nome) throw(runtime_e
     //execute the command to create the table
     try {
         comando.executar();
-        if(comando.listaResultado.back().getValorColuna() == ""){}
+        if(comando.listaResultado.size()== 0){
+            resultado.setValor(Resultado::FALHA);
+            return resultado;
+        }
+        comando.listaResultado.pop_back();
+
+         query = "DELETE FROM Definicao WHERE Id IN (SELECT Definicao FROM TermoDef WHERE Termo = '" +nome.getNome()+"');";
+         comando.setComandoSQL(query);
+         comando.executar();
+
+        query = "DELET FROM TermoDef WHERE Termo = '" +nome.getNome()+"');";
 
             resultado.setValor(ResultadoTermo::SUCESSO);
     }

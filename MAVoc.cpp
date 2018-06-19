@@ -648,11 +648,11 @@ Resultado ApresentacaoGestaoVocab::executarDesenvolvedor(const Email &email) thr
 
                     if(resultadoDefinicao.getValor() == ResultadoDefinicao::SUCESSO){
                         resultado.setValor(Resultado::SUCESSO);
-                        cout << "A definição foi excluida com sucesso."<<endl;
+                        cout << "As definição do termo foram excluida com sucesso."<<endl;
                     }
                     if(resultadoDefinicao.getValor() == ResultadoDefinicao::FALHA){
                         resultado.setValor(Resultado::FALHA);
-                        cout << "A definição não foi encontrada."<<endl;
+                        cout << "O termo não foi encontrado."<<endl;
                     }
                     system("PAUSE");
                 }
