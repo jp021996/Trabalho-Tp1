@@ -219,13 +219,8 @@ ResultadoEspecifico ServicoGestaoVocab::desenvolvedorDeVocab(const string& nomeV
     return resultado;
 }
 
-
-<<<<<<< HEAD
-
 ResultadoVocab ServicoGestaoVocab::criarTermo(const Termo& novoTermo, const string& nomeVocab, const string& email) throw(runtime_error) {
-=======
-ResultadoVocab ServicoGestaoVocab::criarTermo(const Termo& novoTermo, const string& nomeVocab) throw(runtime_error) {
->>>>>>> af8d4518a3b1155268eb871bef52db55e685d06a
+
     //the object to be the result of the registering
     ResultadoVocab resultado;
 
@@ -252,7 +247,6 @@ ResultadoVocab ServicoGestaoVocab::criarTermo(const Termo& novoTermo, const stri
                 throw runtime_error("Já existe um termo com este nome");
 
         }else{
-            cout <<"Entrou";
             query = "SELECT Nome FROM Vocabulario WHERE Nome = '"+nomeVocab+"';";
             comando.setComandoSQL(query);
             comando.executar();
@@ -260,13 +254,11 @@ ResultadoVocab ServicoGestaoVocab::criarTermo(const Termo& novoTermo, const stri
                 resultado.setValor(ResultadoVocab::FALHA);
                 return resultado;
             }else{
-                cout <<"Entrou";
                 query = "SELECT Desenvolvedor FROM VocabDesenvolvedor WHERE Vocabulario = '"+nomeVocab+"';";
                 comando.setComandoSQL(query);
                 comando.executar();
                 voltas = comando.listaResultado.size();
                 for(i=0;i<voltas;i++){
-                        cout <<"Entrou";
                     if(comando.listaResultado.back().getValorColuna() != email){
                         comando.listaResultado.pop_back();
                         resultado.setValor(ResultadoVocab::PERMISSAO_NEGADA);

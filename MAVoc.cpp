@@ -1010,22 +1010,12 @@ Resultado ApresentacaoGestaoVocab::executarAdministrador(const Email &email) thr
             }
 
             try{
-
-                resultadoVocab = link_MA_MS_GestaoVocab->criarTermo(novoTermo, nomeVocab, resultado.getAdministrador().getEmail());
+                resultadoVocab = link_MA_MS_GestaoVocab->criarTermo(novoTermo, nomeVocab, email.getEmail());
 
                 if(resultadoVocab.getValor() == ResultadoVocab::SUCESSO){
                     resultado.setValor(Resultado::SUCESSO);
 
-                    int numeroTermos = resultadoVocab.getTermos().size();
-
                     cout << "O novo termo '"<< novoTermo.getNome() <<"' foi adicionado ao vocabulário '" << nomeVocab <<"' com sucesso."<<endl<<endl;
-
-                    cout << " > Nome do vocabulário: " << nomeVocab << endl;
-                    cout << " > Termos (" << numeroTermos << "):"<<endl;
-                    for(int i=0; i<numeroTermos; i++){
-                        cout << "    - '"<< resultadoVocab.getTermos()[i].getNome()  << "'"<< endl;
-                    }
-
 
                     system("PAUSE");
                 }
