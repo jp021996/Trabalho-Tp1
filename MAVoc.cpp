@@ -566,13 +566,13 @@ Resultado ApresentacaoGestaoVocab::executarDesenvolvedor(const Email &email) thr
                 cin >> nomeTermo;
                 cout << "Digite a nova data do termo: ";
                 cin >> dataTermo;
-                cout << "Digite a nova classe do termo: ";
-                cin >> classeTermo;
+                //cout << "Digite a nova classe do termo: ";
+                //cin >> classeTermo;
 
                 try{
                     termoNovo.setNome(nomeTermo);
                     termoNovo.setData(dataTermo);
-                    termoNovo.setPreferencia(classeTermo);
+                    //termoNovo.setPreferencia(classeTermo);
                     break;
                 }
                 catch (invalid_argument& e){
@@ -590,9 +590,9 @@ Resultado ApresentacaoGestaoVocab::executarDesenvolvedor(const Email &email) thr
                     resultado.setValor(Resultado::SUCESSO);
 
                     cout << "O termo foi editado com sucesso" << endl;
-                    cout << "Nome do termo: " << resultadoTermo.getTermo().getNome() << endl;
-                    cout << "Data do termo: " << resultadoTermo.getTermo().getData() << endl;
-                    cout << "Classe do termo: " << resultadoTermo.getTermo().getPreferencia() << endl;
+                    cout << "Nome do termo: " << termoNovo.getNome() << endl;
+                    cout << "Data do termo: " << termoNovo.getData() << endl;
+                    //cout << "Classe do termo: " << resultadoTermo.getTermo().getPreferencia() << endl;
 
 
                     system("PAUSE");
@@ -1095,8 +1095,8 @@ Resultado ApresentacaoGestaoVocab::executarAdministrador(const Email &email) thr
                 cin >> nomeTermo;
                 cout << "Digite a nova data do termo: ";
                 cin >> dataTermo;
-                cout << "Digite a nova classe do termo: ";
-                cin >> classeTermo;
+                //cout << "Digite a nova classe do termo: ";
+                //cin >> classeTermo;
 
                 try{
                     termoNovo.setNome(nomeTermo);
@@ -1119,9 +1119,9 @@ Resultado ApresentacaoGestaoVocab::executarAdministrador(const Email &email) thr
                     resultado.setValor(Resultado::SUCESSO);
 
                 cout << "O termo foi editado com sucesso" << endl;
-                cout << "Nome do termo: " << resultadoTermo.getTermo().getNome() << endl;
-                cout << "Data do termo: " << resultadoTermo.getTermo().getData() << endl;
-                cout << "Classe do termo: " << resultadoTermo.getTermo().getPreferencia() << endl;
+                cout << "Nome do termo: " << termoNovo.getNome() << endl;
+                cout << "Data do termo: " << termoNovo.getData() << endl;
+                //cout << "Classe do termo: " << resultadoTermo.getTermo().getPreferencia() << endl;
 
 
                 system("PAUSE");

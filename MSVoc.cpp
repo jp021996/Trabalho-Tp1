@@ -296,8 +296,36 @@ ResultadoTermo ServicoGestaoVocab::editarTermo(const Termo& termo, const Termo& 
     //the object to be the result of the registering
     ResultadoTermo resultado;
 
+    //the object that make the SQL comand
+    ComandoSQL comando;
 
+    //create a query to show all the vocabs
+    string query;
 
+    query = "SELECT Nome FROM Termo WHERE Nome = '"+termo.getNome()+"';";
+
+    //put the query into the object
+    comando.setComandoSQL(query);
+
+    //execute the command to create the table
+    try {
+        comando.executar();
+        if(comando.listaResultado.size() == 0){
+            throw runtime_error("O Termo que deseja editar não existe");
+        }else{
+
+        comando.listaResultado.pop_back();
+         query = "UPDATE Termo SET Nome = '"+novoTermo.getNome()+"', Data = '"+novoTermo.getData()+"'  WHERE Nome = '" +termo.getNome()+"';";
+         comando.setComandoSQL(query);
+
+            resultado.setValor(ResultadoTermo::SUCESSO);
+        }
+    }
+    catch (EErroPersistencia& e){
+        cerr << e.what();
+        resultado.setValor(ResultadoTermo::FALHA);
+        return resultado;
+    }
 
     return resultado;
 }
