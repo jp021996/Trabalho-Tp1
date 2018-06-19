@@ -20,7 +20,7 @@ ResultadoLista ServicoGestaoVocab::listarVocabs() throw(runtime_error) {
     try {
     comando.executar();
 
-        if(comando.listaResultado.size()== 0){
+        if(comando.listaResultado.size() <= 0){
             resultado.setValor(ResultadoVocab::FALHA);
             return resultado;
         }else{
@@ -533,7 +533,6 @@ ResultadoVocab ServicoGestaoVocab::criarVocabulario(const Vocabulario& vocab, co
 
     if(tam != 0){
         for(counter = 0; counter < tam; counter++){
-            cout << comando.listaResultado.back().getValorColuna() << endl;
             comando.listaResultado.pop_back();
         }
     }

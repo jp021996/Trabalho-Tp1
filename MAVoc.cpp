@@ -63,7 +63,6 @@ Resultado ApresentacaoGestaoVocab::executarLeitor(const Email &email) throw(runt
 
             if(resultadoLista.getValor() == ResultadoLista::FALHA){
                 cout << "Não há vocabulários ou ocorreu uma falha" << endl;
-                cout << comando.listaResultado.size();
             }else{
                 voltas = comando.listaResultado.size();
 
