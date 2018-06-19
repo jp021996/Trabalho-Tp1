@@ -185,7 +185,7 @@ ResultadoEspecifico ServicoGestaoVocab::desenvolvedorDeVocab(const string& nomeV
                         comando.listaResultado.pop_back();
                         }
 
-            if(voltas >= 5){
+            if(voltas >= 10){
                     resultado.setValor(ResultadoEspecifico::FALHA_2);
                     return resultado;
 
@@ -296,8 +296,36 @@ ResultadoTermo ServicoGestaoVocab::editarTermo(const Termo& termo, const Termo& 
     //the object to be the result of the registering
     ResultadoTermo resultado;
 
+    //the object that make the SQL comand
+    ComandoSQL comando;
 
+    //create a query to show all the vocabs
+    string query;
 
+    query = "SELECT Nome FROM Termo WHERE Nome = '"+termo.getNome()+"';";
+
+    //put the query into the object
+    comando.setComandoSQL(query);
+
+    //execute the command to create the table
+    try {
+        comando.executar();
+        if(comando.listaResultado.size() == 0){
+            throw runtime_error("O Termo que deseja editar não existe");
+        }else{
+
+        comando.listaResultado.pop_back();
+         query = "UPDATE Termo SET Nome = '"+novoTermo.getNome()+"', Data = '"+novoTermo.getData()+"'  WHERE Nome = '" +termo.getNome()+"';";
+         comando.setComandoSQL(query);
+
+            resultado.setValor(ResultadoTermo::SUCESSO);
+        }
+    }
+    catch (EErroPersistencia& e){
+        cerr << e.what();
+        resultado.setValor(ResultadoTermo::FALHA);
+        return resultado;
+    }
 
     return resultado;
 }
@@ -556,6 +584,35 @@ Resultado ServicoGestaoVocab::excluirVocabulario(const Vocabulario& vocab) throw
     ComandoSQL comando;
     //create a query to show all the vocabs
     string query;
+    //name of database
+    string nomeDatabase = "";
+
+    query = "SELECT Nome \
+    FROM Vocabulario \
+    WHERE Nome = '" + vocab.getNome() + "';";
+
+    //put the query into the object
+    comando.setComandoSQL(query);
+
+    //execute the command to create the table
+    try {
+        comando.executar();
+    }
+    catch (EErroPersistencia& e){
+        cerr << e.what();
+        system("pause");
+        resultado.setValor(Resultado::FALHA);
+        return resultado;
+    }
+
+    nomeDatabase = comando.listaResultado.back().getValorColuna();
+
+    if(nomeDatabase == ""){
+        resultado.setValor(Resultado::FALHA);
+        return resultado;
+    }
+
+    comando.listaResultado.pop_back();
 
     query = "DELETE FROM Vocabulario WHERE Nome = '" + vocab.getNome() + "';";
 
@@ -572,6 +629,8 @@ Resultado ServicoGestaoVocab::excluirVocabulario(const Vocabulario& vocab) throw
         resultado.setValor(Resultado::FALHA);
         return resultado;
     }
+
+    resultado.setValor(Resultado::SUCESSO);
 
     return resultado;
 }
