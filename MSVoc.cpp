@@ -185,7 +185,7 @@ ResultadoEspecifico ServicoGestaoVocab::desenvolvedorDeVocab(const string& nomeV
                         comando.listaResultado.pop_back();
                         }
 
-            if(voltas >= 5){
+            if(voltas >= 10){
                     resultado.setValor(ResultadoEspecifico::FALHA_2);
                     return resultado;
 
